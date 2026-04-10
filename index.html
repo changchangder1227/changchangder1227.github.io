@@ -722,6 +722,7 @@ footer {
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:680px){
+  .atm { display:none; }
   nav { padding:12px 14px; gap:14px; }
   nav a { font-size:9px; letter-spacing:.2em; }
   .scene { padding:60px 20px; }
@@ -915,6 +916,8 @@ footer {
     aspect-ratio: 4/3;
     overflow: hidden;
     border-radius: 14px;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* iOS Safari border-radius clip fix */
+    transform: translateZ(0); /* force compositing layer */
   }
   .scene-sticky-block .scene-photo-stack {
     position: static;
@@ -1222,7 +1225,7 @@ img[src*="first_weijer.jpg"] {
 <img alt="椰林大道" class="scene-media-img" src="freshmen_tree.jpg"/>
 </div>
 <div class="scene-photo-item">
-<img alt="椰林大道" class="scene-media-img" src="little_mech_dance.JPG"/>
+<img alt="椰林大道" class="scene-media-img" src="little_mech_dance_small.jpg"/>
 </div>
 <div class="scene-photo-item">
 <img alt="椰林大道" class="scene-media-img" src="grad_bike.jpg"/>
@@ -1656,17 +1659,19 @@ window.addEventListener('scroll',()=>{
 });
 
 
-/* ── MOBILE PHOTO DOTS ── */
+/* ── MOBILE PHOTO AUTO-ADVANCE + DOTS ── */
 (function(){
   function initDots(){
     document.querySelectorAll('.mobile-dots').forEach(d=>d.remove());
     if(window.innerWidth > 900) return;
+
     document.querySelectorAll('.scene-sticky-block .scene-media-frame').forEach(frame=>{
       const stack = frame.querySelector('.scene-photo-stack');
       if(!stack) return;
       const items = [...stack.querySelectorAll('.scene-photo-item')];
       if(items.length <= 1) return;
 
+      // Dot indicators
       const dots = document.createElement('div');
       dots.className = 'mobile-dots';
       items.forEach((_,i)=>{
@@ -1677,20 +1682,51 @@ window.addEventListener('scroll',()=>{
       });
       frame.insertAdjacentElement('afterend', dots);
 
-      // Scroll → update dots
+      let current = 0;
+      let autoTimer = null;
+
+      function updateDots(idx){
+        dots.querySelectorAll('.mobile-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+      }
+
+      function goTo(idx){
+        current = ((idx % items.length) + items.length) % items.length;
+        stack.scrollTo({left: stack.offsetWidth * current, behavior:'smooth'});
+        updateDots(current);
+      }
+
+      function stopAuto(){ clearInterval(autoTimer); autoTimer = null; }
+
+      function startAuto(){
+        stopAuto();
+        autoTimer = setInterval(()=>goTo(current + 1), 3500);
+      }
+
+      // 進入 viewport 時才開始自動播放
+      const observer = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) startAuto();
+          else stopAuto();
+        });
+      },{threshold:0.4});
+      observer.observe(frame);
+
+      // 使用者滑動 → 更新 dots，暫停自動，5s 後恢復
       stack.addEventListener('scroll',()=>{
         const idx = Math.round(stack.scrollLeft / Math.max(1, stack.offsetWidth));
-        dots.querySelectorAll('.mobile-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+        if(idx !== current){ current = idx; updateDots(current); }
       },{passive:true});
 
-      // Click dot → scroll to photo
+      stack.addEventListener('touchstart',()=>stopAuto(),{passive:true});
+      stack.addEventListener('touchend',()=>setTimeout(startAuto, 5000),{passive:true});
+
+      // 點 dot → 跳到該張
       dots.querySelectorAll('.mobile-dot').forEach((d,i)=>{
-        d.addEventListener('click',()=>{
-          stack.scrollTo({left: stack.offsetWidth*i, behavior:'smooth'});
-        });
+        d.addEventListener('click',()=>{ stopAuto(); goTo(i); setTimeout(startAuto, 5000); });
       });
     });
   }
+
   window.addEventListener('load', initDots);
   let resizeTimer;
   window.addEventListener('resize',()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(initDots,200); });
@@ -1840,12 +1876,14 @@ async function handleRSVP(e){
       if (progress >= t2) index = Math.min(2, s.items.length - 1);
       else if (progress >= t1) index = Math.min(1, s.items.length - 1);
 
-      if (block.id === 'scene-mrt') {
-        const switchPoint = parseFloat((block.dataset.switch || '0.52').split(',')[0]);
-        block.classList.toggle('is-switched', progress >= switchPoint);
-        setActive(s.items, progress >= switchPoint ? 1 : 0);
-      } else {
-        setActive(s.items, index);
+      if (!isMobile) {
+        if (block.id === 'scene-mrt') {
+          const switchPoint = parseFloat((block.dataset.switch || '0.52').split(',')[0]);
+          block.classList.toggle('is-switched', progress >= switchPoint);
+          setActive(s.items, progress >= switchPoint ? 1 : 0);
+        } else {
+          setActive(s.items, index);
+        }
       }
 
       const mediaShift = -18 * progress;
