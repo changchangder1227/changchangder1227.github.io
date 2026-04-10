@@ -1234,7 +1234,7 @@ img[src*="first_weijer.jpg"] {
           她是觀察很細的人。從布幕縫隙看到腳，靠鞋子就認出了他。<br/>
           暗自有點開心。
         </p>
-<p class="scene-caption">他高高瘦瘦靦腆，Beatbox 亞洲賽台灣代表，大家都在關注他，也被大家叫上去表演</p>
+<p class="scene-caption">他高高瘦瘦靦腆，Beatbox 亞洲賽台灣代表，大家都在關注他，也被大家叫上去表演；她開朗大方，讓他印象深刻</p>
 </div>
 <div class="scene-media">
 <div class="scene-media-frame"><div class="scene-photo-stack"><div class="scene-photo-item active">
@@ -1270,8 +1270,8 @@ img[src*="first_weijer.jpg"] {
 <span class="scene-tag">台大 · 椰林大道</span>
 <h2 class="scene-title">同一班，同一台腳踏車</h2>
 <p class="scene-body">
-        後來同班，一起上課、去圖書館、騎同一台腳踏車穿過椰林大道。起初他載她，大四他膝蓋不好，換她載他。<br/><br/>
-        一起在學習開放空間讀書、做專題、比賽得獎、拿書卷獎，在學校一起長大。
+        後來同班，一起上課、去圖書館、騎同一台腳踏車穿過椰林大道。一起在學習開放空間讀書、做專題、比賽得獎、拿書卷獎，在學校一起長大。<br/><br/>
+        起初他載她，大四他膝蓋不好，換她載他。
       </p>
 <p class="scene-caption">有個阿伯路過，對她說「阿呦，神力女超人喔」</p>
 </div>
@@ -1359,7 +1359,7 @@ img[src*="first_weijer.jpg"] {
             大二，維哲拿下台灣 beatbox 冠軍，前往德國參加世界賽。<br/><br/>
             她一起去了，和各國冠軍一起，在很年輕的時候有了一段很難忘的回憶。
           </p>
-<p class="scene-caption">在德國吃得最多不是豬腳，是河粉</p>
+<p class="scene-caption">比得台灣冠軍更厲害的是，她總是在吵雜的節奏中生存</p>
 </div>
 </div>
 </div>
@@ -1374,7 +1374,7 @@ img[src*="first_weijer.jpg"] {
 <span class="scene-tag">加州 灣區 · 一小時的距離</span>
 <h2 class="scene-title">一起準備，一起飛過去</h2>
 <p class="scene-body">
-          兩個人的夢想是去美國看看世界。一起備考、準備申請資料，最後幸運地都錄取了灣區距離一小時的學校。<br/><br/>
+          兩個人的夢想是去美國看看世界。一起備考、準備申請資料，最後幸運地都錄取了灣區距離一小時的學校。灣區公共交通很不方便，平均單程2.5小時<br/><br/>
           她說自己成績沒他好，沒想到真的錄取了。她在 Stanford 吸收矽谷、設計精華，他在 UC Berkeley 鑽研自駕車研究。
         </p>
 <p class="scene-caption">現在他在 Tesla 做自駕車，她是 Apple iPhone 工程師</p>
@@ -1521,7 +1521,9 @@ img[src*="first_weijer.jpg"] {
 <p>感謝您的回覆，我們會寄送確認信至您的信箱。</p>
 <p style="margin-top:1.4rem;font-size:13px;color:var(--muted);letter-spacing:.04em;line-height:2;">
   別忘了加入我們的 LINE，婚禮資訊將在這裡更新 🤍<br/>
-  <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;">@@29hfvlc</span>
+  <a href="https://lin.ee/58Jh69w" target="_blank" rel="noopener" style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;text-decoration:none;border-bottom:1px solid rgba(200,150,96,.35);">
+    @29hfvlc
+  </a>
 </p>
 </div>
 <form id="rsvp-form" onsubmit="handleRSVP(event)">
@@ -1690,79 +1692,175 @@ window.addEventListener('scroll',()=>{
 });
 
 
-/* ── MOBILE PHOTO AUTO-ADVANCE + DOTS ── */
+/* ── MOBILE PHOTO AUTO-ADVANCE + DOTS (MOBILE ONLY, STABLE) ── */
 (function(){
-  function initDots(){
+  let controllers = [];
+
+  function destroyControllers(){
+    controllers.forEach(ctrl=>{
+      if(ctrl.timer) clearTimeout(ctrl.timer);
+      if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
+      if(ctrl.observer) ctrl.observer.disconnect();
+    });
+    controllers = [];
     document.querySelectorAll('.mobile-dots').forEach(d=>d.remove());
+  }
+
+  function initMobileCarousel(){
+    destroyControllers();
+
+    // 只在 mobile 啟用，桌機完全不變
     if(window.innerWidth > 900) return;
 
     document.querySelectorAll('.scene-sticky-block .scene-media-frame').forEach(frame=>{
       const stack = frame.querySelector('.scene-photo-stack');
       if(!stack) return;
+
       const items = [...stack.querySelectorAll('.scene-photo-item')];
       if(items.length <= 1) return;
 
-      // Dot indicators
       const dots = document.createElement('div');
       dots.className = 'mobile-dots';
-      items.forEach((_,i)=>{
+      items.forEach((_, i)=>{
         const btn = document.createElement('button');
-        btn.className = 'mobile-dot'+(i===0?' active':'');
-        btn.setAttribute('aria-label','照片 '+(i+1));
+        btn.className = 'mobile-dot' + (i === 0 ? ' active' : '');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', '照片 ' + (i + 1));
         dots.appendChild(btn);
       });
       frame.insertAdjacentElement('afterend', dots);
 
-      let current = 0;
-      let autoTimer = null;
+      const ctrl = {
+        frame,
+        stack,
+        items,
+        dots,
+        current: 0,
+        timer: null,
+        resumeTimer: null,
+        isVisible: false,
+        isAnimating: false,
+        isInteracting: false,
+        lastAutoAt: 0,
+        observer: null
+      };
+      controllers.push(ctrl);
+
+      function width(){
+        return ctrl.stack.clientWidth || ctrl.frame.clientWidth || 1;
+      }
 
       function updateDots(idx){
-        dots.querySelectorAll('.mobile-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
-      }
-
-      function goTo(idx){
-        current = ((idx % items.length) + items.length) % items.length;
-        stack.scrollTo({left: stack.offsetWidth * current, behavior:'smooth'});
-        updateDots(current);
-      }
-
-      function stopAuto(){ clearInterval(autoTimer); autoTimer = null; }
-
-      function startAuto(){
-        stopAuto();
-        autoTimer = setInterval(()=>goTo(current + 1), 3500);
-      }
-
-      // 進入 viewport 時才開始自動播放
-      const observer = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting) startAuto();
-          else stopAuto();
+        ctrl.dots.querySelectorAll('.mobile-dot').forEach((d, i)=>{
+          d.classList.toggle('active', i === idx);
         });
-      },{threshold:0.4});
-      observer.observe(frame);
+      }
 
-      // 使用者滑動 → 更新 dots，暫停自動，5s 後恢復
-      stack.addEventListener('scroll',()=>{
-        const idx = Math.round(stack.scrollLeft / Math.max(1, stack.offsetWidth));
-        if(idx !== current){ current = idx; updateDots(current); }
-      },{passive:true});
+      function stopAuto(){
+        if(ctrl.timer){
+          clearTimeout(ctrl.timer);
+          ctrl.timer = null;
+        }
+      }
 
-      stack.addEventListener('touchstart',()=>stopAuto(),{passive:true});
-      stack.addEventListener('touchend',()=>setTimeout(startAuto, 5000),{passive:true});
+      function scheduleNext(delay = 3200){
+        stopAuto();
+        if(!ctrl.isVisible || ctrl.isInteracting) return;
+        ctrl.timer = setTimeout(()=>{
+          goTo(ctrl.current + 1, true);
+        }, delay);
+      }
 
-      // 點 dot → 跳到該張
-      dots.querySelectorAll('.mobile-dot').forEach((d,i)=>{
-        d.addEventListener('click',()=>{ stopAuto(); goTo(i); setTimeout(startAuto, 5000); });
+      function goTo(idx, isAuto = false){
+        if(ctrl.isAnimating) return;
+
+        ctrl.current = ((idx % ctrl.items.length) + ctrl.items.length) % ctrl.items.length;
+        ctrl.isAnimating = true;
+        if(isAuto) ctrl.lastAutoAt = Date.now();
+
+        ctrl.stack.scrollTo({
+          left: width() * ctrl.current,
+          behavior: 'smooth'
+        });
+
+        updateDots(ctrl.current);
+
+        setTimeout(()=>{
+          ctrl.isAnimating = false;
+          if(ctrl.isVisible && !ctrl.isInteracting){
+            scheduleNext();
+          }
+        }, 650);
+      }
+
+      function syncFromScroll(){
+        const idx = Math.round(ctrl.stack.scrollLeft / width());
+        if(idx !== ctrl.current){
+          ctrl.current = Math.max(0, Math.min(ctrl.items.length - 1, idx));
+          updateDots(ctrl.current);
+        }
+      }
+
+      ctrl.observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          ctrl.isVisible = entry.isIntersecting;
+          if(ctrl.isVisible){
+            scheduleNext(2200);
+          } else {
+            stopAuto();
+          }
+        });
+      }, { threshold: 0.55 });
+
+      ctrl.observer.observe(ctrl.frame);
+
+      ctrl.stack.addEventListener('scroll', syncFromScroll, { passive: true });
+
+      ctrl.stack.addEventListener('touchstart', ()=>{
+        ctrl.isInteracting = true;
+        stopAuto();
+        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
+      }, { passive: true });
+
+      ctrl.stack.addEventListener('touchend', ()=>{
+        ctrl.isInteracting = false;
+        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
+        ctrl.resumeTimer = setTimeout(()=>{
+          if(ctrl.isVisible) scheduleNext(2600);
+        }, 2200);
+      }, { passive: true });
+
+      ctrl.stack.addEventListener('pointerdown', ()=>{
+        ctrl.isInteracting = true;
+        stopAuto();
+        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
+      }, { passive: true });
+
+      ctrl.stack.addEventListener('pointerup', ()=>{
+        ctrl.isInteracting = false;
+        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
+        ctrl.resumeTimer = setTimeout(()=>{
+          if(ctrl.isVisible) scheduleNext(2600);
+        }, 2200);
+      }, { passive: true });
+
+      ctrl.dots.querySelectorAll('.mobile-dot').forEach((dot, i)=>{
+        dot.addEventListener('click', ()=>{
+          ctrl.isInteracting = false;
+          if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
+          goTo(i, false);
+        });
       });
     });
   }
 
-  window.addEventListener('load', initDots);
+  window.addEventListener('load', initMobileCarousel);
   let resizeTimer;
-  window.addEventListener('resize',()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(initDots,200); });
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initMobileCarousel, 220);
+  });
 })();
-
 /* ── RSVP ── */
 function toggleAttend(yes){document.getElementById('att-fields').classList.toggle('show',yes);}
 function toggleGuests(show){document.getElementById('guest-field').classList.toggle('show',show);}
