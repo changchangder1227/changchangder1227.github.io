@@ -916,8 +916,9 @@ footer {
     aspect-ratio: 4/3;
     overflow: hidden;
     border-radius: 14px;
-    -webkit-mask-image: -webkit-radial-gradient(white, black); /* iOS Safari border-radius clip fix */
-    transform: translateZ(0); /* force compositing layer */
+    contain: paint;                /* force paint boundary = hard clip */
+    transform: translateZ(0);      /* compositing layer */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
   .scene-sticky-block .scene-photo-stack {
     position: static;
@@ -925,6 +926,7 @@ footer {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    overscroll-behavior-x: none;   /* prevent scroll chaining on iOS */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     height: 100%;
@@ -934,11 +936,14 @@ footer {
     position: relative;
     inset: unset;
     flex: 0 0 100%;
+    min-width: 100%;               /* prevent subpixel shrink */
     height: 100%;
     scroll-snap-align: start;
+    scroll-snap-stop: always;      /* prevent fast-swipe skipping */
     opacity: 1 !important;
     transform: none !important;
     filter: sepia(.08) saturate(.88) brightness(.95) !important;
+    overflow: hidden;              /* clip image within item */
   }
   .scene-sticky-block .scene-photo-item.active {
     opacity: 1 !important;
@@ -948,10 +953,36 @@ footer {
   .scene-sticky-block .scene-photo-item img {
     width: 100%; height: 100%; object-fit: cover;
   }
+  /* MRT: 強制蓋掉 position:absolute / translateX，改成 flex carousel */
+  .scene-mrt-slide .scene-photo-stack {
+    position: static !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    overscroll-behavior-x: none !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  .scene-mrt-slide .scene-photo-stack::-webkit-scrollbar { display: none; }
   .scene-mrt-slide .scene-photo-item,
-  .scene-mrt-slide .scene-photo-item.active {
+  .scene-mrt-slide .scene-photo-item.active,
+  .scene-mrt-slide .scene-photo-item:nth-child(1),
+  .scene-mrt-slide .scene-photo-item:nth-child(2),
+  .scene-mrt-slide.is-switched .scene-photo-item:nth-child(1),
+  .scene-mrt-slide.is-switched .scene-photo-item:nth-child(2) {
+    position: relative !important;
+    inset: unset !important;
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
+    height: 100% !important;
     transform: none !important;
     opacity: 1 !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+    overflow: hidden !important;
   }
 }
 
