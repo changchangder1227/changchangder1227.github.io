@@ -722,20 +722,71 @@ footer {
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:680px){
-  nav { padding:14px 20px; gap:18px; }
-  .scene { padding:80px 24px; }
+  nav { padding:12px 14px; gap:14px; }
+  nav a { font-size:9px; letter-spacing:.2em; }
+  .scene { padding:60px 20px; }
   .info-grid { grid-template-columns:1fr; }
-  .rsvp-card { padding:28px 18px; }
+  .rsvp-card { padding:24px 16px; }
   .f-grid2 { grid-template-columns:1fr; }
   .choice-grid.c2 { grid-template-columns:1fr; }
   .scene-right .scene-inner { margin-left:0; text-align:left; }
   .scene-right .scene-body  { margin-left:0; }
+
+  /* Hero */
+  .hero-text { bottom:6vh; padding:0 20px; }
+  .hero-eyebrow { font-size:10px; letter-spacing:.36em; margin-bottom:10px; }
+  .hero-venue { letter-spacing:.16em; margin-bottom:20px; }
+  .hero-cta { padding:10px 26px; }
+  .scroll-cue { display:none; }
+
+  /* Scene year */
+  .scene-year { font-size: clamp(44px,14vw,72px) !important; }
+
+  /* Present */
+  #present { padding: 80px 20px 60px; }
+  .present-num { font-size: clamp(64px,18vw,120px) !important; }
+
+  /* Info */
+  #info { padding: 60px 20px; }
+  .info-card { padding:22px 16px; }
+  .sched-track::before { left:68px; }
+  .sched-row { grid-template-columns:80px 1fr; gap:12px; padding:16px 0; }
+  .time-big { font-size:17px; }
+
+  /* SF */
+  .sf-title-block { padding:48px 20px 36px; }
+  .sf-banner { aspect-ratio:4/3; }
+  .sf-footer-note { padding:22px 20px 36px; }
+
+  /* RSVP */
+  #rsvp { padding:60px 20px; }
+  .num-pill { width:44px; height:40px; font-size:18px; }
+  .attend { padding:14px 8px; }
+
+  /* Footer */
+  footer { padding:40px 20px; }
 }
 
 /* Fix #4: sticky block 內統一靠左，不受 scene-right 影響 */
 .scene-sticky-block .scene-inner:not(.present-reveal) { text-align:left; margin-left:0; margin-right:0; }
 .scene-sticky-block .scene-body  { margin-left:0; }
 .scene-sticky-block .atm         { margin-left:0; }
+
+/* ══ SWIPE DOTS ══ */
+.mobile-dots {
+  display: none;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 11px;
+}
+.mobile-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(180,150,96,.28);
+  border: none; padding: 0; cursor: pointer;
+  transition: background .3s, transform .25s;
+}
+.mobile-dot.active { background: var(--warm); transform: scale(1.4); }
+@media(max-width:900px){ .mobile-dots { display: flex; } }
 
 /* ══════════ STICKY STORY BLOCKS (ALL SCENES) ══════════ */
 .scene-sticky-block {
@@ -816,10 +867,10 @@ footer {
 
 @media(max-width:900px){
   .scene-sticky-block {
-    height: auto;
-    overflow: hidden;
-    padding: 80px 24px;
-    min-height: 100vh;
+    height: auto !important;
+    min-height: unset !important;
+    overflow: visible;
+    padding: 60px 20px 48px;
   }
 
   .scene-sticky-block .scene-sticky-inner {
@@ -830,18 +881,74 @@ footer {
 
   .scene-sticky-block .scene-grid,
   .scene-sticky-block .scene-grid-story,
+  .scene-sticky-block.scene-right .scene-grid,
+  .scene-sticky-block.scene-right .scene-grid-story,
   #scene-germany .scene-grid-germany {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
   }
 
-  .scene-sticky-block.scene-left .scene-media,
-  .scene-sticky-block.scene-right .scene-media {
-    order: -1;
+  .scene-sticky-block .scene-media { order: -1; }
+  .scene-sticky-block .scene-inner { order: 1; }
+
+  /* 所有 scene-right 文字在手機靠左 */
+  .scene-sticky-block.scene-right .scene-inner,
+  .scene-sticky-block .scene-inner {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .scene-sticky-block.scene-right .scene-body,
+  .scene-sticky-block .scene-body { margin-left: 0 !important; }
+  .scene-sticky-block.scene-right .atm,
+  .scene-sticky-block .atm { margin-left: 0 !important; }
+
+  /* scene-year 在手機縮小、減少 overlap */
+  .scene-sticky-block .scene-year {
+    font-size: clamp(44px, 14vw, 70px) !important;
+    margin-bottom: -0.2em !important;
   }
 
+  /* Photo stack → horizontal swipe carousel */
   .scene-sticky-block .scene-media-frame {
     min-height: auto;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 14px;
+  }
+  .scene-sticky-block .scene-photo-stack {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    height: 100%;
+  }
+  .scene-sticky-block .scene-photo-stack::-webkit-scrollbar { display: none; }
+  .scene-sticky-block .scene-photo-item {
+    position: relative;
+    inset: unset;
+    flex: 0 0 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: sepia(.08) saturate(.88) brightness(.95) !important;
+  }
+  .scene-sticky-block .scene-photo-item.active {
+    opacity: 1 !important;
+    transform: none !important;
+    z-index: auto;
+  }
+  .scene-sticky-block .scene-photo-item img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .scene-mrt-slide .scene-photo-item,
+  .scene-mrt-slide .scene-photo-item.active {
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
 
@@ -1044,11 +1151,7 @@ img[src*="first_weijer.jpg"] {
   .scene-sticky-block .scene-inner,
   .scene-sticky-block .parallax-bg,
   .scene-sticky-block .scene-media-note {
-    transform:none !important;
-  }
-  .scene-sticky-block .scene-photo-item,
-  .scene-sticky-block .scene-photo-item.active {
-    filter:none;
+    transform: none !important;
   }
 }
 
@@ -1552,6 +1655,46 @@ window.addEventListener('scroll',()=>{
   }
 });
 
+
+/* ── MOBILE PHOTO DOTS ── */
+(function(){
+  function initDots(){
+    document.querySelectorAll('.mobile-dots').forEach(d=>d.remove());
+    if(window.innerWidth > 900) return;
+    document.querySelectorAll('.scene-sticky-block .scene-media-frame').forEach(frame=>{
+      const stack = frame.querySelector('.scene-photo-stack');
+      if(!stack) return;
+      const items = [...stack.querySelectorAll('.scene-photo-item')];
+      if(items.length <= 1) return;
+
+      const dots = document.createElement('div');
+      dots.className = 'mobile-dots';
+      items.forEach((_,i)=>{
+        const btn = document.createElement('button');
+        btn.className = 'mobile-dot'+(i===0?' active':'');
+        btn.setAttribute('aria-label','照片 '+(i+1));
+        dots.appendChild(btn);
+      });
+      frame.insertAdjacentElement('afterend', dots);
+
+      // Scroll → update dots
+      stack.addEventListener('scroll',()=>{
+        const idx = Math.round(stack.scrollLeft / Math.max(1, stack.offsetWidth));
+        dots.querySelectorAll('.mobile-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+      },{passive:true});
+
+      // Click dot → scroll to photo
+      dots.querySelectorAll('.mobile-dot').forEach((d,i)=>{
+        d.addEventListener('click',()=>{
+          stack.scrollTo({left: stack.offsetWidth*i, behavior:'smooth'});
+        });
+      });
+    });
+  }
+  window.addEventListener('load', initDots);
+  let resizeTimer;
+  window.addEventListener('resize',()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(initDots,200); });
+})();
 
 /* ── RSVP ── */
 function toggleAttend(yes){document.getElementById('att-fields').classList.toggle('show',yes);}
