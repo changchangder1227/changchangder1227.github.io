@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>弓弓長長 · Changs Getting Married · 12.27.2026</title>
+<title>張張有你 · Changs Getting Married · 12.27.2026</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400&amp;family=Cormorant+Garamond:ital,wght@0,200;0,300;1,200;1,300&amp;family=Noto+Sans+TC:wght@200;300&amp;display=swap" rel="stylesheet"/>
 <style>
@@ -61,54 +61,105 @@ nav a:hover { color:var(--terra); }
 ══════════════════════════════════════════ */
 #hero {
   position:relative; height:100vh; overflow:hidden;
-  display:flex; align-items:center; justify-content:center;
+  background:#faf5ed;
 }
 
-/* full-bleed main visual — slower, more poetic breath */
-.hero-img {
+/* ── Layer 1: 純背景 (bg) ── */
+.hero-bg {
   position:absolute; inset:0; z-index:1;
   width:100%; height:100%;
-  object-fit:cover; object-position:center top;
-  transform-origin:center center;
-  animation:heroBreath 20s ease-in-out infinite;
+  object-fit:cover; object-position:center center;
+  animation:heroBreath 22s ease-in-out infinite;
   will-change:transform;
 }
 @keyframes heroBreath {
-  0%,100% { transform:scale(1.00) translateY(0px); }
-  50%      { transform:scale(1.02) translateY(-3px); }
+  0%,100% { transform:scale(1.00); }
+  50%      { transform:scale(1.025) translateY(-4px); }
 }
 
-/* warm overlay — bottom fade stronger for text legibility */
-.hero-overlay {
-  position:absolute; inset:0; z-index:2;
-  background:
-    linear-gradient(to bottom,
-      rgba(253,249,243,.10) 0%,
-      rgba(253,249,243,.02) 35%,
-      rgba(253,249,243,.45) 72%,
-      rgba(253,249,243,.94) 100%);
+/* ── Layer 2: 愛心 (heart) — 上方居中，浮動 ── */
+.hero-heart {
+  position:absolute; z-index:6;
+  top:clamp(18px,4vh,44px); left:50%; transform:translateX(-50%);
+  width:clamp(110px,14vw,180px); height:auto;
+  opacity:.38;
+  filter:sepia(.2) saturate(.5) brightness(1.15);
+  animation:heartFloat 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes heartFloat {
+  0%,100% { transform:translateX(-50%) translateY(0px); }
+  50%      { transform:translateX(-50%) translateY(-8px); }
 }
 
-/* floating petals over hero */
+/* ── Layer 3: 人物 (couple) — 中下居中 ── */
+.hero-couple {
+  position:absolute; z-index:3;
+  bottom:13vh; left:50%; transform:translateX(-50%);
+  height:clamp(56vh,66vh,74vh); width:auto;
+  animation:coupleIn 1.2s ease-out .3s both;
+  pointer-events:none;
+  transform-origin:bottom center;
+}
+@keyframes coupleIn {
+  from { opacity:0; transform:translateX(-50%) translateY(30px); }
+  to   { opacity:1; transform:translateX(-50%) translateY(0); }
+}
+
+/* ── Layer 4: 底部漸層遮罩 — 讓文字區乾淨 ── */
+.hero-fade {
+  position:absolute; z-index:4; pointer-events:none;
+  bottom:0; left:0; right:0; height:35%;
+  background:linear-gradient(to bottom,
+    rgba(250,245,237,0)   0%,
+    rgba(250,245,237,.22) 22%,
+    rgba(250,245,237,.60) 44%,
+    rgba(250,245,237,.90) 64%,
+    rgba(250,245,237,1)   100%);
+}
+
+/* ── Layer 5: 花瓣 ── */
 .hero-petals {
-  position:absolute; inset:0; z-index:3; pointer-events:none; overflow:hidden; opacity:.45;
+  position:absolute; inset:0; z-index:5; pointer-events:none; overflow:hidden; opacity:.40;
 }
 .petal {
   position:absolute; border-radius:50% 0 50% 0;
   opacity:0; animation:petalDrift linear infinite;
 }
 @keyframes petalDrift {
-  0%   { transform:translateY(-30px) rotate(0deg) translateX(0px);   opacity:0; }
+  0%   { transform:translateY(-30px) rotate(0deg) translateX(0px); opacity:0; }
   10%  { opacity:.35; }
   88%  { opacity:.12; }
   100% { transform:translateY(105vh) rotate(380deg) translateX(40px); opacity:0; }
 }
 
-/* text block — stagger reveal */
-.hero-text {
-  position:absolute; z-index:4;
-  bottom:9vh; left:0; right:0;
+/* ── Layer 6: Logo 頂部正中 ── */
+.hero-logo {
+  position:absolute; z-index:7;
+  top:clamp(28px,5.5vh,56px); left:0; right:0;
   text-align:center;
+  opacity:0; animation:heroItemIn .9s ease-out .25s both;
+}
+.hero-logo img {
+  height:clamp(64px,8vw,100px); width:auto;
+  opacity:.92;
+}
+.hero-logo-sub { display:none; }
+
+/* ── Layer 7: 文字底部 ── */
+.hero-text {
+  position:absolute; z-index:8;
+  bottom:clamp(5vh,7vh,9vh); left:0; right:0;
+  text-align:center;
+}
+.hero-changs {
+  display:block; margin-bottom:6px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(12px,1.35vw,17px); font-weight:300;
+  letter-spacing:.38em; color:rgba(176,120,80,.85);
+  text-transform:uppercase;
+  text-shadow: 0 0 40px rgba(250,245,237,1), 0 0 15px rgba(250,245,237,1);
+  animation-delay:.55s !important;
 }
 .hero-text > * {
   opacity:0;
@@ -128,8 +179,9 @@ nav a:hover { color:var(--terra); }
 
 .hero-eyebrow {
   font-family:'Cormorant Garamond', serif;
-  font-size:11px; letter-spacing:.55em; color:rgba(180,120,80,.8);
-  text-transform:uppercase; display:block; margin-bottom:14px;
+  font-size:13px; letter-spacing:.48em; color:rgba(180,120,80,.9);
+  text-transform:uppercase; display:block; margin-bottom:18px;
+  text-shadow: 0 0 30px rgba(250,245,237,1), 0 0 15px rgba(250,245,237,1);
 }
 .hero-title-zh {
   font-family:'Noto Serif TC', serif;
@@ -139,9 +191,10 @@ nav a:hover { color:var(--terra); }
 }
 .hero-names {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(36px,6.5vw,72px);
+  font-size:clamp(26px,3.8vw,48px);
   font-weight:200; letter-spacing:.14em; color:var(--ink);
   line-height:1.15;
+  text-shadow: 0 0 40px rgba(250,245,237,.9), 0 0 20px rgba(250,245,237,.8);
 }
 .hero-amp { font-style:italic; color:var(--terra); margin:0 .3em; }
 
@@ -734,8 +787,12 @@ footer {
   .scene-right .scene-body  { margin-left:0; }
 
   /* Hero */
-  .hero-text { bottom:6vh; padding:0 20px; }
-  .hero-eyebrow { font-size:10px; letter-spacing:.36em; margin-bottom:10px; }
+  .hero-logo img { height:42px; }
+  .hero-heart { width:clamp(90px,18vw,130px); top:clamp(8px,1.5vh,20px); }
+  .hero-couple { height:clamp(42vh,52vh,58vh); bottom:16vh; }
+  .hero-text { bottom:3vh; padding:0 20px; }
+  .hero-changs { font-size:10px; letter-spacing:.28em; margin-bottom:7px; }
+  .hero-eyebrow { font-size:9px; letter-spacing:.32em; margin-bottom:8px; }
   .hero-venue { letter-spacing:.16em; margin-bottom:20px; }
   .hero-cta { padding:10px 26px; }
   .scroll-cue { display:none; }
@@ -1189,6 +1246,26 @@ img[src*="first_weijer.jpg"] {
   }
 }
 
+
+/* Remove all decorative atm lines */
+.atm,
+[class*="atm-"] {
+  display: none !important;
+}
+
+
+/* ===== Fix Safari bottom gap (global) ===== */
+.scene-photo-item img,
+.scene-media-img {
+  transform: scale(1.05) translateY(1.2%);
+  transform-origin: center center;
+}
+
+/* ===== EXCLUDE SF CITY HALL (wedding photos) ===== */
+#sf-cityhall img {
+  transform: none !important;
+}
+
 </style>
 </head>
 <body>
@@ -1199,13 +1276,24 @@ img[src*="first_weijer.jpg"] {
 </nav>
 <!-- ══════════ HERO ══════════ -->
 <section id="hero">
-<img alt="弓弓長長 · 張維哲 × 張芝綾" class="hero-img" src="hero_wide.jpg"/>
-<div class="hero-overlay"></div>
-<!-- floating petals -->
+<!-- L1: 純背景 -->
+<img class="hero-bg" src="16_9_background.jpg" alt=""/>
+<!-- L2: 愛心 -->
+<img class="hero-heart" src="heart.png" alt=""/>
+<!-- L3: 人物 -->
+<img class="hero-couple" src="main.png" alt="張維哲 × 張芝綾"/>
+<!-- L4: 底部淡出遮罩 -->
+<div class="hero-fade"></div>
+<!-- L5: 花瓣 -->
 <div class="hero-petals" id="petals-container"></div>
+<!-- L6: Logo -->
+<div class="hero-logo">
+  <img alt="弓弓長長" src="logo.png"/>
+</div>
 <div class="hero-text">
 <span class="hero-eyebrow">誠摯邀請您出席我們的婚禮</span>
-<div class="hero-names" style="font-family:'Noto Serif TC',serif;font-size:clamp(28px,4.5vw,52px);letter-spacing:.18em;">
+<span class="hero-changs">Changs Getting Married</span>
+<div class="hero-names" style="font-family:'Noto Serif TC',serif;font-size:clamp(25px,3.6vw,45px);letter-spacing:.18em;">
       張維哲 <span class="hero-amp">·</span> 張芝綾
     </div>
 <div class="hero-divider">
@@ -1226,7 +1314,6 @@ img[src*="first_weijer.jpg"] {
 <div class="scene-sticky-inner"><div class="scene-grid scene-grid-story">
 <div class="scene-inner">
 <span class="scene-year">2016</span>
-<span class="atm atm-camp"></span>
 <span class="scene-tag">夏 · 台大機械宿營</span>
 <h2 class="scene-title">舞會亂排，剛好是你</h2>
 <p class="scene-body">
@@ -1266,7 +1353,6 @@ img[src*="first_weijer.jpg"] {
 </div>
 <div class="scene-inner">
 <span class="scene-year">2016–2021</span>
-<span class="atm atm-ntu"></span>
 <span class="scene-tag">台大 · 椰林大道</span>
 <h2 class="scene-title">同一班，同一台腳踏車</h2>
 <p class="scene-body">
@@ -1291,7 +1377,6 @@ img[src*="first_weijer.jpg"] {
 </div>
 <div class="scene-inner">
 <span class="scene-year">2016–</span>
-<span class="atm atm-ntu"></span>
 <span class="scene-tag">台北 · 末班車前</span>
 <h2 class="scene-title">陪你回家，再自己搭回來</h2>
 <p class="scene-body">
@@ -1307,7 +1392,6 @@ img[src*="first_weijer.jpg"] {
 <div class="scene-sticky-inner"><div class="scene-grid scene-grid-story">
 <div class="scene-inner">
 <span class="scene-year">2016–2020</span>
-<span class="atm atm-bball"></span>
 <span class="scene-tag">系隊 · 7 號</span>
 <h2 class="scene-title">從來沒商量過，都選了 7</h2>
 <p class="scene-body">
@@ -1352,7 +1436,6 @@ img[src*="first_weijer.jpg"] {
 </div>
 <div class="scene-inner">
 <span class="scene-year">2018</span>
-<span class="atm atm-lib"></span>
 <span class="scene-tag">德國 · 世界賽</span>
 <h2 class="scene-title">他拿了冠軍，她一起去德國</h2>
 <p class="scene-body">
@@ -1370,7 +1453,6 @@ img[src*="first_weijer.jpg"] {
 <div class="scene-sticky-inner"><div class="scene-grid scene-grid-story">
 <div class="scene-inner">
 <span class="scene-year">2021</span>
-<span class="atm atm-us"></span>
 <span class="scene-tag">加州 灣區 · 一小時的距離</span>
 <h2 class="scene-title">一起準備，一起飛過去</h2>
 <p class="scene-body">
@@ -1521,9 +1603,7 @@ img[src*="first_weijer.jpg"] {
 <p>感謝您的回覆，我們會寄送確認信至您的信箱。</p>
 <p style="margin-top:1.4rem;font-size:13px;color:var(--muted);letter-spacing:.04em;line-height:2;">
   別忘了加入我們的 LINE，婚禮資訊將在這裡更新 🤍<br/>
-  <a href="https://lin.ee/58Jh69w" target="_blank" rel="noopener" style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;text-decoration:none;border-bottom:1px solid rgba(200,150,96,.35);">
-    @29hfvlc
-  </a>
+  <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;">@29hfvlc</span>
 </p>
 </div>
 <form id="rsvp-form" onsubmit="handleRSVP(event)">
@@ -1675,9 +1755,11 @@ window.addEventListener('scroll',()=>{
   if(!ticking){
     requestAnimationFrame(()=>{
       const sy=window.scrollY;
-      // hero parallax
-      const heroImg=document.querySelector('.hero-img');
-      if(heroImg) heroImg.style.transform=`scale(1.01) translateY(${sy*0.03}px)`;
+      // hero parallax — bg slides slower, couple slightly faster for depth
+      const heroBg=document.querySelector('.hero-bg');
+      if(heroBg) heroBg.style.transform=`scale(1.01) translateY(${sy*0.025}px)`;
+      const heroCouple=document.querySelector('.hero-couple');
+      if(heroCouple) heroCouple.style.transform=`translateX(-50%) translateY(${sy*0.05}px)`;
       // per-scene parallax bg
       document.querySelectorAll('.parallax-bg').forEach(bg=>{
         const speed=parseFloat(bg.dataset.speed)||0.06;
@@ -1692,175 +1774,79 @@ window.addEventListener('scroll',()=>{
 });
 
 
-/* ── MOBILE PHOTO AUTO-ADVANCE + DOTS (MOBILE ONLY, STABLE) ── */
+/* ── MOBILE PHOTO AUTO-ADVANCE + DOTS ── */
 (function(){
-  let controllers = [];
-
-  function destroyControllers(){
-    controllers.forEach(ctrl=>{
-      if(ctrl.timer) clearTimeout(ctrl.timer);
-      if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
-      if(ctrl.observer) ctrl.observer.disconnect();
-    });
-    controllers = [];
+  function initDots(){
     document.querySelectorAll('.mobile-dots').forEach(d=>d.remove());
-  }
-
-  function initMobileCarousel(){
-    destroyControllers();
-
-    // 只在 mobile 啟用，桌機完全不變
     if(window.innerWidth > 900) return;
 
     document.querySelectorAll('.scene-sticky-block .scene-media-frame').forEach(frame=>{
       const stack = frame.querySelector('.scene-photo-stack');
       if(!stack) return;
-
       const items = [...stack.querySelectorAll('.scene-photo-item')];
       if(items.length <= 1) return;
 
+      // Dot indicators
       const dots = document.createElement('div');
       dots.className = 'mobile-dots';
-      items.forEach((_, i)=>{
+      items.forEach((_,i)=>{
         const btn = document.createElement('button');
-        btn.className = 'mobile-dot' + (i === 0 ? ' active' : '');
-        btn.type = 'button';
-        btn.setAttribute('aria-label', '照片 ' + (i + 1));
+        btn.className = 'mobile-dot'+(i===0?' active':'');
+        btn.setAttribute('aria-label','照片 '+(i+1));
         dots.appendChild(btn);
       });
       frame.insertAdjacentElement('afterend', dots);
 
-      const ctrl = {
-        frame,
-        stack,
-        items,
-        dots,
-        current: 0,
-        timer: null,
-        resumeTimer: null,
-        isVisible: false,
-        isAnimating: false,
-        isInteracting: false,
-        lastAutoAt: 0,
-        observer: null
-      };
-      controllers.push(ctrl);
-
-      function width(){
-        return ctrl.stack.clientWidth || ctrl.frame.clientWidth || 1;
-      }
+      let current = 0;
+      let autoTimer = null;
 
       function updateDots(idx){
-        ctrl.dots.querySelectorAll('.mobile-dot').forEach((d, i)=>{
-          d.classList.toggle('active', i === idx);
-        });
+        dots.querySelectorAll('.mobile-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
       }
 
-      function stopAuto(){
-        if(ctrl.timer){
-          clearTimeout(ctrl.timer);
-          ctrl.timer = null;
-        }
+      function goTo(idx){
+        current = ((idx % items.length) + items.length) % items.length;
+        stack.scrollTo({left: stack.offsetWidth * current, behavior:'smooth'});
+        updateDots(current);
       }
 
-      function scheduleNext(delay = 3200){
+      function stopAuto(){ clearInterval(autoTimer); autoTimer = null; }
+
+      function startAuto(){
         stopAuto();
-        if(!ctrl.isVisible || ctrl.isInteracting) return;
-        ctrl.timer = setTimeout(()=>{
-          goTo(ctrl.current + 1, true);
-        }, delay);
+        autoTimer = setInterval(()=>goTo(current + 1), 3500);
       }
 
-      function goTo(idx, isAuto = false){
-        if(ctrl.isAnimating) return;
-
-        ctrl.current = ((idx % ctrl.items.length) + ctrl.items.length) % ctrl.items.length;
-        ctrl.isAnimating = true;
-        if(isAuto) ctrl.lastAutoAt = Date.now();
-
-        ctrl.stack.scrollTo({
-          left: width() * ctrl.current,
-          behavior: 'smooth'
+      // 進入 viewport 時才開始自動播放
+      const observer = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) startAuto();
+          else stopAuto();
         });
+      },{threshold:0.4});
+      observer.observe(frame);
 
-        updateDots(ctrl.current);
+      // 使用者滑動 → 更新 dots，暫停自動，5s 後恢復
+      stack.addEventListener('scroll',()=>{
+        const idx = Math.round(stack.scrollLeft / Math.max(1, stack.offsetWidth));
+        if(idx !== current){ current = idx; updateDots(current); }
+      },{passive:true});
 
-        setTimeout(()=>{
-          ctrl.isAnimating = false;
-          if(ctrl.isVisible && !ctrl.isInteracting){
-            scheduleNext();
-          }
-        }, 650);
-      }
+      stack.addEventListener('touchstart',()=>stopAuto(),{passive:true});
+      stack.addEventListener('touchend',()=>setTimeout(startAuto, 5000),{passive:true});
 
-      function syncFromScroll(){
-        const idx = Math.round(ctrl.stack.scrollLeft / width());
-        if(idx !== ctrl.current){
-          ctrl.current = Math.max(0, Math.min(ctrl.items.length - 1, idx));
-          updateDots(ctrl.current);
-        }
-      }
-
-      ctrl.observer = new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-          ctrl.isVisible = entry.isIntersecting;
-          if(ctrl.isVisible){
-            scheduleNext(2200);
-          } else {
-            stopAuto();
-          }
-        });
-      }, { threshold: 0.55 });
-
-      ctrl.observer.observe(ctrl.frame);
-
-      ctrl.stack.addEventListener('scroll', syncFromScroll, { passive: true });
-
-      ctrl.stack.addEventListener('touchstart', ()=>{
-        ctrl.isInteracting = true;
-        stopAuto();
-        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
-      }, { passive: true });
-
-      ctrl.stack.addEventListener('touchend', ()=>{
-        ctrl.isInteracting = false;
-        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
-        ctrl.resumeTimer = setTimeout(()=>{
-          if(ctrl.isVisible) scheduleNext(2600);
-        }, 2200);
-      }, { passive: true });
-
-      ctrl.stack.addEventListener('pointerdown', ()=>{
-        ctrl.isInteracting = true;
-        stopAuto();
-        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
-      }, { passive: true });
-
-      ctrl.stack.addEventListener('pointerup', ()=>{
-        ctrl.isInteracting = false;
-        if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
-        ctrl.resumeTimer = setTimeout(()=>{
-          if(ctrl.isVisible) scheduleNext(2600);
-        }, 2200);
-      }, { passive: true });
-
-      ctrl.dots.querySelectorAll('.mobile-dot').forEach((dot, i)=>{
-        dot.addEventListener('click', ()=>{
-          ctrl.isInteracting = false;
-          if(ctrl.resumeTimer) clearTimeout(ctrl.resumeTimer);
-          goTo(i, false);
-        });
+      // 點 dot → 跳到該張
+      dots.querySelectorAll('.mobile-dot').forEach((d,i)=>{
+        d.addEventListener('click',()=>{ stopAuto(); goTo(i); setTimeout(startAuto, 5000); });
       });
     });
   }
 
-  window.addEventListener('load', initMobileCarousel);
+  window.addEventListener('load', initDots);
   let resizeTimer;
-  window.addEventListener('resize', ()=>{
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initMobileCarousel, 220);
-  });
+  window.addEventListener('resize',()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(initDots,200); });
 })();
+
 /* ── RSVP ── */
 function toggleAttend(yes){document.getElementById('att-fields').classList.toggle('show',yes);}
 function toggleGuests(show){document.getElementById('guest-field').classList.toggle('show',show);}
@@ -1869,27 +1855,29 @@ document.querySelectorAll('input[name="diet"]').forEach(r=>{
   r.addEventListener('change',function(){toggleDiet(this.value==='其他');});
 });
 
-const SHEET_URL='https://script.google.com/macros/s/AKfycbxg_EGmtljW9ygih_KC3rCLQr9UlD0X4EH1NHVTzn4TjRMpP_uFSJvIxW2Wfj1rdkN9ag/exec';
+const SHEET_URL='https://script.google.com/macros/s/AKfycbwGNDIJA0rYUuBKGR6ElWrA_B0G9EFN-Ytg4jD74FmMhaYqoMX7ehgwDZUfxv7VXTVTzQ/exec';
 async function handleRSVP(e){
   e.preventDefault();
   const btn=document.querySelector('.btn-submit');
   btn.textContent='傳送中…';btn.disabled=true;
+  const isYes=document.getElementById('att-yes').checked;
   const dietEl=document.querySelector('input[name="diet"]:checked');
-  const diet=dietEl?.value==='其他'?document.getElementById('inp-diet').value:(dietEl?.value||'');
+  const dietVal=dietEl?.value||'';
   const data={
-    timestamp:new Date().toLocaleString('zh-TW'),
     name:document.getElementById('inp-name').value,
     email:document.getElementById('inp-email').value,
     phone:document.getElementById('inp-phone').value,
     relation:document.querySelector('input[name="rel"]:checked')?.value||'',
-    attend:document.getElementById('att-yes').checked?'會參加':'不克出席',
-    count:document.querySelector('input[name="count"]:checked')?.value||'',
-    guests:document.getElementById('inp-guests').value,
-    diet,
+    attend:isYes?'yes':'no',
+    guests:document.querySelector('input[name="count"]:checked')?.value||'1',
+    guestNames:document.getElementById('inp-guests').value,
+    events:'全程',
+    diet:dietVal==='其他'?'其他':dietVal,
+    dietNote:dietVal==='其他'?document.getElementById('inp-diet').value:'',
     message:document.getElementById('inp-msg').value,
   };
   if(SHEET_URL){
-    try{await fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(data)});}
+    try{await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}
     catch(err){console.warn(err);}
   } else {
     console.log('RSVP (dev):',data);
