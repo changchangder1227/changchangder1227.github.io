@@ -1540,7 +1540,7 @@ img[src*="first_weijer.jpg"] {
 <div style="margin-top:56px;">
 <div class="scene-inner" style="max-width:520px;margin:0 auto;">
 <div class="sched-track">
-<div class="sched-row">
+<div class="sched-row ceremony-only" style="display:none">
 <div class="sched-t"><div class="time-big">11:00</div><div class="time-sm">上午</div></div>
 <div><div class="sched-ev">證婚儀式</div><div class="sched-loc">池畔教堂</div></div>
 </div>
@@ -1658,6 +1658,21 @@ img[src*="first_weijer.jpg"] {
 </div>
 </div>
 <div class="cond" id="att-fields">
+<div class="f-grp ceremony-only" id="ceremony-field" style="display:none">
+<label class="f-label">證婚儀式出席 <span style="font-size:11px;color:var(--dust);letter-spacing:.02em;font-family:'Cormorant Garamond',serif;font-style:italic;">11:00 · 池畔教堂</span></label>
+<div class="attend-grid">
+<label class="attend">
+<input name="ceremony" type="radio" value="yes"/>
+<span class="attend-icon">⛪</span>
+<span class="attend-text">會參加</span>
+</label>
+<label class="attend">
+<input name="ceremony" type="radio" value="no" checked/>
+<span class="attend-icon">🍽</span>
+<span class="attend-text">午宴即可</span>
+</label>
+</div>
+</div>
 <div class="f-grp">
 <label class="f-label">同行人數（含本人）<span class="f-req"> *</span></label>
 <div class="num-row">
@@ -1883,6 +1898,7 @@ async function handleRSVP(e){
     phone:document.getElementById('inp-phone').value,
     relation:document.querySelector('input[name="rel"]:checked')?.value||'',
     attend:isYes?'yes':'no',
+    ceremony:document.querySelector('input[name="ceremony"]:checked')?.value||'no',
     guests:document.querySelector('input[name="count"]:checked')?.value||'1',
     guestNames:document.getElementById('inp-guests').value,
     events:'全程',
@@ -2039,6 +2055,14 @@ async function handleRSVP(e){
   });
 
   render();
+})();
+
+/* ── CEREMONY TOKEN ── */
+(function(){
+  const p = new URLSearchParams(window.location.search);
+  if(p.get('ceremony') === 'true'){
+    document.querySelectorAll('.ceremony-only').forEach(el => el.style.display = '');
+  }
 })();
 
 </script>
