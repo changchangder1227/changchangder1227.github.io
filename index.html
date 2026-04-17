@@ -353,9 +353,11 @@ nav a:hover { color:var(--terra); }
 .scene-media-frame {
   position:relative;
   width:100%;
-  aspect-ratio: 16 / 10;
+  padding-bottom:62.5%; /* 16:10 — Safari fix */
+  height:0;
   border-radius:20px;
   overflow:hidden;
+  isolation:isolate;
   border:1px solid rgba(180,160,130,.22);
   box-shadow:0 10px 30px rgba(42,36,28,.06);
   background:rgba(255,252,246,.45);
@@ -367,6 +369,7 @@ nav a:hover { color:var(--terra); }
   pointer-events:none;
 }
 .scene-media-img, .scene-photo-item img {
+  position:absolute; inset:0;
   width:100%; height:100%; object-fit:cover; display:block;
 }
 img[src*="first_weijer.jpg"] {
@@ -691,13 +694,17 @@ img[src*="first_weijer.jpg"] {
 /* 全寬橫幅誓詞大圖 */
 .sf-banner {
   width: 100%;
-  aspect-ratio: 16/10;
+  position: relative;
+  padding-bottom: 62.5%; /* 16:10 — Safari fix */
+  height: 0;
   overflow: hidden;
+  isolation: isolate;
   opacity: 0; transform: translateY(16px);
   transition: opacity 1.1s ease .2s, transform 1.1s ease .2s;
 }
 #sf-cityhall.sf-visible .sf-banner { opacity: 1; transform: translateY(0); }
 .sf-banner-img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center bottom;
@@ -713,8 +720,11 @@ img[src*="first_weijer.jpg"] {
   margin-top: 3px;
 }
 .sf-gallery-item {
+  position: relative;
   overflow: hidden;
-  aspect-ratio: 3/4;
+  isolation: isolate;
+  padding-bottom: 133.33%; /* 3:4 — Safari fix */
+  height: 0;
   opacity: 0; transform: translateY(20px);
   transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1);
 }
@@ -723,6 +733,7 @@ img[src*="first_weijer.jpg"] {
 #sf-cityhall.sf-visible .sf-gallery-item:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:.66s; }
 
 .sf-gallery-item img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center bottom;
@@ -745,7 +756,7 @@ img[src*="first_weijer.jpg"] {
 @media(max-width: 680px){
   .sf-hero { height: 70vh; }
   .sf-hero-text { padding: 40px 24px 32px; }
-  .sf-banner { aspect-ratio: 4/3; }
+  .sf-banner { padding-bottom: 75%; height: 0; } /* 4:3 mobile — Safari fix */
   .sf-gallery { grid-template-columns: 1fr 1fr; }
   .sf-gallery-item:nth-child(3) { display: none; }
 }
@@ -813,7 +824,7 @@ footer {
 
   /* SF */
   .sf-title-block { padding:48px 20px 36px; }
-  .sf-banner { aspect-ratio:4/3; }
+  .sf-banner { padding-bottom: 75%; height: 0; } /* 4:3 mobile, Safari fix */
   .sf-footer-note { padding:22px 20px 36px; }
 
   /* RSVP */
@@ -1258,17 +1269,8 @@ img[src*="first_weijer.jpg"] {
 }
 
 
-/* ===== Fix Safari bottom gap (global) ===== */
-.scene-photo-item img,
-.scene-media-img {
-  transform: scale(1.05) translateY(1.2%);
-  transform-origin: center center;
-}
 
-/* ===== EXCLUDE SF CITY HALL (wedding photos) ===== */
-#sf-cityhall img {
-  transform: none !important;
-}
+
 
 </style>
 </head>
@@ -1609,6 +1611,14 @@ img[src*="first_weijer.jpg"] {
   別忘了加入我們的 LINE，婚禮資訊將在這裡更新 🤍<br/>
   <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;">@29hfvlc</span>
 </p>
+<a href="https://line.me/R/ti/p/@229hfvlc" 
+   target="_blank" rel="noopener"
+   style="display:inline-block; margin-top:16px; padding:10px 32px;
+          border:1px solid rgba(176,120,80,.38); color:var(--terra);
+          font-family:'Noto Sans TC',sans-serif; font-size:10px;
+          letter-spacing:.24em; text-decoration:none; text-transform:uppercase;">
+  加入 LINE 好友
+</a>
 </div>
 <form id="rsvp-form" onsubmit="handleRSVP(event)">
 <div class="f-grp">
@@ -1763,7 +1773,7 @@ window.addEventListener('scroll',()=>{
       const heroBg=document.querySelector('.hero-bg');
       if(heroBg) heroBg.style.transform=`scale(1.01) translateY(${sy*0.025}px)`;
       const heroCouple=document.querySelector('.hero-couple');
-      if(heroCouple) heroCouple.style.transform=`translateX(-50%) translateY(${sy*0.05}px)`;
+      if(heroCouple && window.innerWidth > 680) heroCouple.style.transform=`translateX(-50%) translateY(${sy*0.05}px)`;
       // per-scene parallax bg
       document.querySelectorAll('.parallax-bg').forEach(bg=>{
         const speed=parseFloat(bg.dataset.speed)||0.06;
