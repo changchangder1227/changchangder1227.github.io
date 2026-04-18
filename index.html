@@ -798,7 +798,7 @@ footer {
   .scene-right .scene-body  { margin-left:0; }
 
   /* Hero */
-  .hero-logo img { height:42px; }
+  .hero-logo img { height:42px; max-width:55vw; object-fit:contain; }
   .hero-heart { width:clamp(90px,18vw,130px); top:clamp(8px,1.5vh,20px); }
   .hero-couple { height:clamp(42vh,52vh,58vh); bottom:16vh; }
   .hero-text { bottom:3vh; padding:0 20px; }
@@ -1024,9 +1024,10 @@ footer {
   .scene-sticky-block .scene-photo-item img {
     width: 100%; height: 100%; object-fit: cover;
   }
-  /* MRT: 強制蓋掉 position:absolute / translateX，改成 flex carousel */
+  /* MRT: flex carousel，保留 absolute 讓高度從 padding-bottom hack 正確繼承 */
   .scene-mrt-slide .scene-photo-stack {
-    position: static !important;
+    position: absolute !important;
+    inset: 0 !important;
     display: flex !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
@@ -1846,23 +1847,27 @@ window.addEventListener('scroll',()=>{
         autoTimer = setInterval(()=>goTo(current + 1), 3500);
       }
 
-      // 進入 viewport 時才開始自動播放
+      // 進入 viewport 時才開始自動播放（threshold 提高，避免 sticky scroll 反覆觸發堆疊）
+      let isVisible = false;
       const observer = new IntersectionObserver(entries=>{
         entries.forEach(e=>{
-          if(e.isIntersecting) startAuto();
-          else stopAuto();
+          const wasVisible = isVisible;
+          isVisible = e.isIntersecting;
+          if(isVisible && !wasVisible) startAuto();
+          else if(!isVisible) stopAuto();
         });
-      },{threshold:0.4});
+      },{threshold:0.75});
       observer.observe(frame);
 
-      // 使用者滑動 → 更新 dots，暫停自動，5s 後恢復
+      // 使用者滑動 → 更新 dots
       stack.addEventListener('scroll',()=>{
         const idx = Math.round(stack.scrollLeft / Math.max(1, stack.offsetWidth));
         if(idx !== current){ current = idx; updateDots(current); }
       },{passive:true});
 
+      // touch 時暫停，放開後若仍在視野內才恢復
       stack.addEventListener('touchstart',()=>stopAuto(),{passive:true});
-      stack.addEventListener('touchend',()=>setTimeout(startAuto, 5000),{passive:true});
+      stack.addEventListener('touchend',()=>{ if(isVisible) setTimeout(startAuto, 5000); },{passive:true});
 
       // 點 dot → 跳到該張
       dots.querySelectorAll('.mobile-dot').forEach((d,i)=>{
