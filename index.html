@@ -497,6 +497,7 @@ img[src*="first_weijer.jpg"] {
   margin-top:52px;
 }
 .info-grid .info-card:first-child { grid-column:1 / -1; }
+.info-grid .info-card { max-width:none; }
 .info-card {
   background:rgba(255,252,246,.7);
   border:1px solid rgba(212,169,106,.16);
@@ -835,7 +836,7 @@ footer {
   .scene-right .scene-body  { margin-left:0; }
 
   /* Hero */
-  .hero-logo img { height:42px; max-width:55vw; object-fit:contain; }
+  .hero-logo img { width:clamp(140px,42vw,200px); height:auto; object-fit:contain; }
   .hero-heart { width:clamp(90px,18vw,130px); top:clamp(8px,1.5vh,20px); }
   .hero-couple { height:clamp(42vh,52vh,58vh); bottom:16vh; }
   .hero-text { bottom:4.5vh; padding:0 20px; }
