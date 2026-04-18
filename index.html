@@ -392,7 +392,7 @@ img[src*="first_weijer.jpg"] {
 .scene-photo-item { position:absolute; inset:0; opacity:0; transition:opacity .6s ease; }
 .scene-photo-item.active { opacity:.82; }
 @media(max-width:900px){
-  .scene-grid, .scene-right .scene-grid { grid-template-columns:1fr; gap:28px; }
+  .scene-grid, .scene-right .scene-grid { grid-template-columns:1fr; gap:36px; }
   .scene-left .scene-media, .scene-right .scene-media { order:-1; }
 }
 
@@ -463,6 +463,7 @@ img[src*="first_weijer.jpg"] {
   display:grid; grid-template-columns:1fr 1fr; gap:24px;
   margin-top:52px;
 }
+.info-grid .info-card:first-child { grid-column:1 / -1; }
 .info-card {
   background:rgba(255,252,246,.7);
   border:1px solid rgba(212,169,106,.16);
@@ -658,6 +659,9 @@ img[src*="first_weijer.jpg"] {
 #sf-cityhall {
   position: relative; z-index: 10;
   background: #ede8df;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
 }
 
@@ -801,7 +805,7 @@ footer {
   .hero-logo img { height:42px; max-width:55vw; object-fit:contain; }
   .hero-heart { width:clamp(90px,18vw,130px); top:clamp(8px,1.5vh,20px); }
   .hero-couple { height:clamp(42vh,52vh,58vh); bottom:16vh; }
-  .hero-text { bottom:3vh; padding:0 20px; }
+  .hero-text { bottom:4.5vh; padding:0 20px; }
   .hero-changs { font-size:10px; letter-spacing:.28em; margin-bottom:7px; }
   .hero-eyebrow { font-size:9px; letter-spacing:.32em; margin-bottom:8px; }
   .hero-venue { letter-spacing:.16em; margin-bottom:20px; }
@@ -1494,7 +1498,7 @@ img[src*="first_weijer.jpg"] {
 <div class="scene-inner present-reveal" style="max-width:600px;margin:0 auto;text-align:center;">
 <span class="present-num">十</span>
 <span class="present-label">Ten Years · 2016 → 2026</span>
-<div class="present-quote">"弓弓長長"</div>
+<div class="present-quote">「弓弓長長」</div>
 <p class="present-body">
       我們都姓張，都是 O 型，背號都選了 7。<br/>
       有些事不用商量，就是剛好一樣。<br/><br/>
@@ -1586,11 +1590,22 @@ img[src*="first_weijer.jpg"] {
 <div class="info-row">
 <span class="info-detail">🚆 大眾運輸｜機場捷運 A8 長庚醫院站 → 計程車約 10–15 分鐘<br/>台鐵 桃園站 → 計程車約 15–20 分鐘</span>
 </div>
-<div style="margin-top:16px;padding:14px;background:rgba(245,237,216,.4);border:1px solid rgba(212,169,106,.14);">
-<div style="font-family:'Noto Sans TC',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--warm);text-transform:uppercase;margin-bottom:7px;">著裝建議</div>
-<div style="font-size:12.5px;color:var(--muted);line-height:1.85;">
-            婚禮色調是溫暖自然的米色與夕陽感色系，<br/>歡迎一起融入這個氛圍。
-          </div>
+</div>
+<div class="info-card scene-inner">
+<span class="info-tag">Dress Code</span>
+<div class="info-name">著裝建議</div>
+<div class="info-row">
+<span class="info-detail">婚禮色調是溫暖自然的米色與夕陽感色系，歡迎一起融入這個氛圍。</span>
+</div>
+<div style="display:flex;gap:8px;margin:14px 0 12px;">
+  <div style="width:26px;height:26px;border-radius:50%;background:#faf5ed;border:1px solid rgba(180,160,130,.35);" title="米白"></div>
+  <div style="width:26px;height:26px;border-radius:50%;background:#e4ceaa;border:1px solid rgba(180,160,130,.2);" title="小麥"></div>
+  <div style="width:26px;height:26px;border-radius:50%;background:#c89660;border:1px solid rgba(180,160,130,.2);" title="暖橘"></div>
+  <div style="width:26px;height:26px;border-radius:50%;background:#b07850;border:1px solid rgba(180,160,130,.2);" title="陶土"></div>
+  <div style="width:26px;height:26px;border-radius:50%;background:#8fa882;border:1px solid rgba(180,160,130,.2);" title="草木綠"></div>
+</div>
+<div class="info-row">
+<span class="info-detail" style="font-size:12px;color:var(--dust);">✦ 建議：大地色、米色、柔橘、草木綠<br/>✦ 避免：全黑、全白、螢光或高飽和色</span>
 </div>
 </div>
 </div>
@@ -1608,9 +1623,10 @@ img[src*="first_weijer.jpg"] {
 <div class="success-ring">✦</div>
 <h3>感謝您的回覆</h3>
 <p>感謝您的回覆，我們會寄送確認信至您的信箱。</p>
+<div id="success-line-block" style="display:none;">
 <p style="margin-top:1.4rem;font-size:13px;color:var(--muted);letter-spacing:.04em;line-height:2;">
   別忘了加入我們的 LINE，婚禮資訊將在這裡更新 🤍<br/>
-  <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;">@29hfvlc</span>
+  <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;">@229hfvlc</span>
 </p>
 <a href="https://line.me/R/ti/p/@229hfvlc" 
    target="_blank" rel="noopener"
@@ -1620,6 +1636,7 @@ img[src*="first_weijer.jpg"] {
           letter-spacing:.24em; text-decoration:none; text-transform:uppercase;">
   加入 LINE 好友
 </a>
+</div>
 </div>
 <form id="rsvp-form" onsubmit="handleRSVP(event)">
 <div class="f-grp">
@@ -1920,6 +1937,7 @@ async function handleRSVP(e){
   }
   document.getElementById('rsvp-form').style.display='none';
   document.getElementById('success-msg').classList.add('show');
+  if(isYes) document.getElementById('success-line-block').style.display='block';
   document.getElementById('rsvp').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
