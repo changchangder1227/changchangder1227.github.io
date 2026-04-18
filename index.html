@@ -33,7 +33,32 @@ body {
   overflow-x:hidden;
 }
 
-/* ══ CURSOR / CANVAS REMOVED FOR A CALMER EXPERIENCE ══ */
+/* ══ HERO LOADER OVERLAY ══ */
+#hero-loader {
+  position:fixed; inset:0; z-index:9999;
+  background:var(--cream);
+  display:flex; align-items:center; justify-content:center;
+  transition:opacity .7s ease, visibility .7s ease;
+}
+#hero-loader.done {
+  opacity:0; visibility:hidden; pointer-events:none;
+}
+#hero-loader svg {
+  width:36px; height:36px;
+  animation:loaderSpin 1.6s linear infinite;
+  opacity:.35;
+}
+@keyframes loaderSpin {
+  from { transform:rotate(0deg); }
+  to   { transform:rotate(360deg); }
+}
+
+/* Hero images start hidden — JS reveals after load */
+.hero-bg, .hero-couple {
+  opacity:0;
+}
+.hero-bg.loaded  { animation:heroBreath 22s ease-in-out infinite; }
+.hero-couple.loaded { animation:coupleIn 1.2s ease-out .1s both; }
 
 /* ══ NAV ══ */
 nav {
@@ -69,7 +94,6 @@ nav a:hover { color:var(--terra); }
   position:absolute; inset:0; z-index:1;
   width:100%; height:100%;
   object-fit:cover; object-position:center center;
-  animation:heroBreath 22s ease-in-out infinite;
   will-change:transform;
 }
 @keyframes heroBreath {
@@ -97,7 +121,6 @@ nav a:hover { color:var(--terra); }
   position:absolute; z-index:3;
   bottom:13vh; left:50%; transform:translateX(-50%);
   height:clamp(56vh,66vh,74vh); width:auto;
-  animation:coupleIn 1.2s ease-out .3s both;
   pointer-events:none;
   transform-origin:bottom center;
 }
@@ -1280,6 +1303,12 @@ img[src*="first_weijer.jpg"] {
 </style>
 </head>
 <body>
+<!-- ── HERO LOADER ── -->
+<div id="hero-loader">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="10" stroke="#c89660" stroke-width="1.5" stroke-dasharray="40 20" stroke-linecap="round"/>
+  </svg>
+</div>
 <nav id="nav">
 <a href="#story">故事</a>
 <a href="#info">婚禮資訊</a>
@@ -2086,6 +2115,38 @@ async function handleRSVP(e){
   if(p.get('ceremony') === 'true'){
     document.querySelectorAll('.ceremony-only').forEach(el => el.style.display = '');
   }
+})();
+
+/* ── HERO LOADER — wait for bg + couple before reveal ── */
+(function(){
+  const loader  = document.getElementById('hero-loader');
+  const bgImg   = document.querySelector('.hero-bg');
+  const couple  = document.querySelector('.hero-couple');
+  if(!loader || !bgImg || !couple) return;
+
+  let bgDone = false, coupleDone = false;
+
+  function tryReveal(){
+    if(!bgDone || !coupleDone) return;
+    // Both images ready — add loaded classes to trigger animations
+    bgImg.classList.add('loaded');
+    couple.classList.add('loaded');
+    // Dismiss loader
+    loader.classList.add('done');
+  }
+
+  function markBg()     { bgDone     = true; tryReveal(); }
+  function markCouple() { coupleDone = true; tryReveal(); }
+
+  // If already cached (complete), fire immediately
+  if(bgImg.complete)   markBg();
+  else bgImg.addEventListener('load', markBg, {once:true});
+
+  if(couple.complete)  markCouple();
+  else couple.addEventListener('load', markCouple, {once:true});
+
+  // Safety fallback — never block more than 4s
+  setTimeout(()=>{ bgDone = true; coupleDone = true; tryReveal(); }, 4000);
 })();
 
 </script>
