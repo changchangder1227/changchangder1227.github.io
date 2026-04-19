@@ -128,7 +128,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 3: 人物 (couple) — 中下居中 ── */
 .hero-couple {
   position:absolute; z-index:3;
-  bottom:5vh; left:50%; transform:translateX(-50%) translateY(30px);
+  bottom:8vh; left:50%; transform:translateX(-50%) translateY(30px);
   height:clamp(56vh,66vh,74vh); width:auto;
   pointer-events:none;
   transform-origin:bottom center;
@@ -188,9 +188,9 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 6: Logo 頂部正中 ── */
 .hero-logo {
   position:absolute; z-index:7;
-  top:clamp(44px,6vh,60px); left:0; right:0;
+  top:clamp(68px,10vh,96px); left:0; right:0;
   text-align:center;
-  display:flex; flex-direction:column; align-items:center; gap:1px;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
   opacity:0; animation:heroItemIn .9s ease-out .25s both;
 }
 .hero-logo img {
@@ -199,7 +199,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 }
 .hero-logo-sub { display:none; }
 .hero-top-text {
-  display:flex; flex-direction:column; align-items:center; gap:0px;
+  display:flex; flex-direction:column; align-items:center; gap:2px;
 }
 
 /* ── Layer 7: 文字底部 ── */
@@ -250,7 +250,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 }
 .hero-names {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(32px,4.4vw,60px);
+  font-size:clamp(38px,5.2vw,70px);
   font-weight:200; letter-spacing:.1em; color:#1a1410;
   line-height:1.05;
   text-shadow: 0 0 40px rgba(250,245,237,1), 0 0 80px rgba(250,245,237,1);
@@ -1420,7 +1420,7 @@ img[src*="first_weijer.jpg"] {
   </div>
 </div>
 <div class="hero-text">
-<div class="hero-names">張維哲  張芝綾</div>
+<div class="hero-names">張維哲 張芝綾</div>
 <div class="hero-divider">
 <div class="hero-divider-line"></div>
 <div class="hero-divider-dot"></div>
