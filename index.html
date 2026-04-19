@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>張張有你 · Changs Getting Married · 12.27.2026</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400&amp;family=Cormorant+Garamond:ital,wght@0,200;0,300;1,200;1,300&amp;family=Noto+Sans+TC:wght@200;300&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400&amp;family=Cormorant+Garamond:ital,wght@0,200;0,300;1,200;1,300&amp;family=Noto+Sans+TC:wght@200;300&amp;family=Unbounded:wght@200;300&amp;display=swap" rel="stylesheet"/>
 <style>
 /* ══════════════════════════════════════════
    TOKENS
@@ -61,23 +61,28 @@ body {
 /* ══ NAV ══ */
 nav {
   position:fixed; top:0; width:100%; z-index:500;
-  padding:18px 52px;
-  display:flex; justify-content:center; gap:48px;
+  padding:14px 52px;
+  display:flex; justify-content:center; gap:8px;
   transition:background .5s, opacity .4s;
 }
 nav.scrolled {
-  background:rgba(253,249,243,.9);
+  background:rgba(253,249,243,.92);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(212,169,106,.1);
 }
 nav a {
-  font-family:'Noto Sans TC', sans-serif;
-  font-size:10px; font-weight:300;
-  letter-spacing:.3em; color:rgba(110,99,88,.7);
+  font-family:'Unbounded', sans-serif;
+  font-size:9px; font-weight:200;
+  letter-spacing:.22em; color:rgba(110,99,88,.8);
   text-decoration:none; text-transform:uppercase;
-  transition:color .3s;
+  padding:8px 18px;
+  border:1px solid rgba(180,150,100,.22);
+  border-radius:100px;
+  background:rgba(253,249,243,.55);
+  backdrop-filter:blur(8px);
+  transition:all .3s;
 }
-nav a:hover { color:var(--terra); }
+nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:rgba(253,249,243,.85); }
 
 /* ══════════════════════════════════════════
    HERO  — 強化版
@@ -123,7 +128,7 @@ nav a:hover { color:var(--terra); }
 /* ── Layer 3: 人物 (couple) — 中下居中 ── */
 .hero-couple {
   position:absolute; z-index:3;
-  bottom:13vh; left:50%; transform:translateX(-50%) translateY(30px);
+  bottom:5vh; left:50%; transform:translateX(-50%) translateY(30px);
   height:clamp(56vh,66vh,74vh); width:auto;
   pointer-events:none;
   transform-origin:bottom center;
@@ -137,6 +142,20 @@ nav a:hover { color:var(--terra); }
 @keyframes coupleIn {
   from { opacity:0; transform:translateX(-50%) translateY(30px); }
   to   { opacity:1; transform:translateX(-50%) translateY(0); }
+}
+
+/* ── Layer 3.5: 人物下半部白化漸層 ── */
+.hero-couple-fade {
+  position:absolute; z-index:4; pointer-events:none;
+  bottom:8vh; left:50%; transform:translateX(-50%);
+  width:clamp(300px,40vw,600px);
+  height:clamp(28vh,33vh,37vh);
+  background:linear-gradient(to bottom,
+    rgba(250,245,237,0)    0%,
+    rgba(250,245,237,.15) 30%,
+    rgba(250,245,237,.55) 60%,
+    rgba(250,245,237,.88) 82%,
+    rgba(250,245,237,1)  100%);
 }
 
 /* ── Layer 4: 底部漸層遮罩 — 讓文字區乾淨 ── */
@@ -169,15 +188,19 @@ nav a:hover { color:var(--terra); }
 /* ── Layer 6: Logo 頂部正中 ── */
 .hero-logo {
   position:absolute; z-index:7;
-  top:clamp(28px,5.5vh,56px); left:0; right:0;
+  top:clamp(44px,6vh,60px); left:0; right:0;
   text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:1px;
   opacity:0; animation:heroItemIn .9s ease-out .25s both;
 }
 .hero-logo img {
-  height:clamp(64px,8vw,100px); width:auto;
+  height:clamp(56px,7vw,88px); width:auto;
   opacity:.92;
 }
 .hero-logo-sub { display:none; }
+.hero-top-text {
+  display:flex; flex-direction:column; align-items:center; gap:0px;
+}
 
 /* ── Layer 7: 文字底部 ── */
 .hero-text {
@@ -185,25 +208,27 @@ nav a:hover { color:var(--terra); }
   bottom:clamp(5vh,7vh,9vh); left:0; right:0;
   text-align:center;
 }
+.hero-top-text {
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+}
 .hero-changs {
-  display:block; margin-bottom:6px;
+  display:block;
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(12px,1.35vw,17px); font-weight:300;
-  letter-spacing:.38em; color:rgba(176,120,80,.85);
+  font-size:clamp(11px,0.9vw,13px); font-weight:300;
+  letter-spacing:.44em; color:rgba(140,85,35,.85);
   text-transform:uppercase;
-  text-shadow: 0 0 40px rgba(250,245,237,1), 0 0 15px rgba(250,245,237,1);
+  text-shadow: 0 0 20px rgba(250,245,237,1), 0 0 40px rgba(250,245,237,.8);
   animation-delay:.55s !important;
 }
 .hero-text > * {
   opacity:0;
   animation:heroItemIn .9s ease-in-out both;
 }
-.hero-eyebrow    { animation-delay:.5s !important; }
-.hero-names      { animation-delay:.75s !important; }
-.hero-divider    { animation-delay:1.0s !important; }
-.hero-date       { animation-delay:1.2s !important; }
-.hero-venue      { animation-delay:1.35s !important; }
-.hero-cta        { animation-delay:1.5s !important; }
+.hero-names      { animation-delay:.5s !important; }
+.hero-divider    { animation-delay:.75s !important; }
+.hero-date       { animation-delay:1.0s !important; }
+.hero-venue      { animation-delay:1.2s !important; }
+.hero-cta        { animation-delay:1.4s !important; }
 
 @keyframes heroItemIn {
   from { opacity:0; transform:translateY(18px); }
@@ -212,9 +237,10 @@ nav a:hover { color:var(--terra); }
 
 .hero-eyebrow {
   font-family:'Cormorant Garamond', serif;
-  font-size:13px; letter-spacing:.48em; color:rgba(180,120,80,.9);
-  text-transform:uppercase; display:block; margin-bottom:18px;
-  text-shadow: 0 0 30px rgba(250,245,237,1), 0 0 15px rgba(250,245,237,1);
+  font-size:clamp(10px,0.8vw,11px); font-weight:200;
+  letter-spacing:.5em; color:rgba(120,70,30,.8);
+  text-transform:uppercase; display:block;
+  text-shadow: 0 0 20px rgba(250,245,237,1), 0 0 40px rgba(250,245,237,.8);
 }
 .hero-title-zh {
   font-family:'Noto Serif TC', serif;
@@ -224,12 +250,12 @@ nav a:hover { color:var(--terra); }
 }
 .hero-names {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(26px,3.8vw,48px);
-  font-weight:200; letter-spacing:.14em; color:var(--ink);
-  line-height:1.15;
-  text-shadow: 0 0 40px rgba(250,245,237,.9), 0 0 20px rgba(250,245,237,.8);
+  font-size:clamp(32px,4.4vw,60px);
+  font-weight:200; letter-spacing:.1em; color:#1a1410;
+  line-height:1.05;
+  text-shadow: 0 0 40px rgba(250,245,237,1), 0 0 80px rgba(250,245,237,1);
 }
-.hero-amp { font-style:italic; color:var(--terra); margin:0 .3em; }
+.hero-amp { font-style:italic; color:var(--terra); margin:0 .2em; }
 
 .hero-divider {
   display:flex; align-items:center; justify-content:center;
@@ -240,23 +266,24 @@ nav a:hover { color:var(--terra); }
 
 .hero-date {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(15px,2vw,22px); font-weight:200;
-  letter-spacing:.18em; color:var(--ink);
-  margin-bottom:5px;
+  font-size:clamp(11px,0.9vw,13px); font-weight:200;
+  letter-spacing:.26em; color:var(--ink);
+  margin-bottom:6px;
+  text-shadow: 0 0 20px rgba(250,245,237,.9);
 }
 .hero-venue {
   font-family:'Noto Sans TC', sans-serif;
-  font-size:10px; font-weight:200;
-  letter-spacing:.26em; color:var(--muted); text-transform:uppercase;
+  font-size:clamp(11px,0.85vw,13px); font-weight:200;
+  letter-spacing:.2em; color:var(--muted);
   margin-bottom:28px;
 }
 .hero-cta {
-  display:inline-block; padding:11px 42px;
-  border:1px solid rgba(176,120,80,.38); color:var(--terra);
-  font-family:'Noto Sans TC', sans-serif;
-  font-size:10px; font-weight:300;
-  letter-spacing:.24em; text-decoration:none; text-transform:uppercase;
-  transition:all .5s; background:rgba(253,249,243,.45);
+  display:inline-block; padding:13px 42px;
+  border:1px solid rgba(176,120,80,.4); color:var(--terra);
+  font-family:'Cormorant Garamond', sans-serif;
+  font-size:clamp(11px,0.9vw,13px); font-weight:300;
+  letter-spacing:.36em; text-decoration:none; text-transform:uppercase;
+  transition:all .35s; background:rgba(253,249,243,.45);
   backdrop-filter:blur(6px);
 }
 .hero-cta:hover { background:var(--terra); color:#fff; border-color:var(--terra); }
@@ -430,18 +457,40 @@ img[src*="first_weijer.jpg"] {
 }
 
 /* ══════════════════════════════════════════
+   STORY INTRO
+══════════════════════════════════════════ */
+.story-intro {
+  text-align:center;
+  padding:100px 40px 72px;
+  max-width:680px;
+  margin:0 auto;
+}
+.story-intro-body {
+  margin-top:28px;
+  font-size:14.5px; color:var(--muted);
+  line-height:2.2; letter-spacing:.04em;
+}
+@media(max-width:680px){
+  .story-intro { padding:72px 24px 52px; }
+  .story-intro-body { font-size:13.5px; }
+}
+
+/* ══════════════════════════════════════════
    PRESENT — 強化版動畫
 ══════════════════════════════════════════ */
 #present {
   position:relative; z-index:10;
   padding:160px 40px 140px;
   text-align:center;
+  background:linear-gradient(180deg, #f2e8d8 0%, #ede0c8 50%, #f2e8d8 100%);
+  border-top:1px solid rgba(212,169,106,.18);
+  border-bottom:1px solid rgba(212,169,106,.18);
 }
 /* 大數字「十」單獨慢速淡入 */
 .present-num {
   font-family:'Cormorant Garamond', serif;
   font-size:clamp(80px,18vw,200px); font-weight:200;
-  color:rgba(228,206,170,.22); line-height:1; display:block;
+  color:rgba(176,120,80,.18); line-height:1; display:block;
   user-select:none;
   opacity:0; transform:scale(.94);
   transition: opacity 2.2s cubic-bezier(.16,1,.3,1), transform 2.4s cubic-bezier(.16,1,.3,1);
@@ -531,6 +580,14 @@ img[src*="first_weijer.jpg"] {
 }
 .map-link:hover { opacity:.65; }
 
+.sched-date {
+  text-align:center;
+  font-family:'Noto Sans TC', sans-serif;
+  font-size:10px; font-weight:200;
+  letter-spacing:.22em; color:var(--warm);
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
 /* schedule */
 .sched-track { max-width:520px; margin:0 auto; position:relative; }
 .sched-track::before {
@@ -585,6 +642,19 @@ img[src*="first_weijer.jpg"] {
   outline:none; transition:border-color .25s, box-shadow .25s;
 }
 .f-input:focus { border-color:var(--warm); box-shadow:0 0 0 3px rgba(200,150,96,.1); }
+.f-input.error { border-color:#c0392b; box-shadow:0 0 0 3px rgba(192,57,43,.1); }
+.field-error {
+  display:none; margin-top:6px;
+  font-family:'Noto Sans TC',sans-serif;
+  font-size:11px; color:#c0392b; letter-spacing:.04em;
+}
+.field-error.show { display:block; }
+.choice-group-error {
+  display:none; margin-top:6px;
+  font-family:'Noto Sans TC',sans-serif;
+  font-size:11px; color:#c0392b; letter-spacing:.04em;
+}
+.choice-group-error.show { display:block; }
 .f-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
 .choice-grid { display:grid; gap:7px; }
@@ -825,8 +895,8 @@ footer {
 /* ══ RESPONSIVE ══ */
 @media(max-width:680px){
   .atm { display:none; }
-  nav { padding:12px 14px; gap:14px; }
-  nav a { font-size:9px; letter-spacing:.2em; }
+  nav { padding:10px 12px; gap:6px; }
+  nav a { font-size:8.5px; letter-spacing:.15em; padding:8px 14px; }
   .scene { padding:60px 20px; }
   .info-grid { grid-template-columns:1fr; }
   .rsvp-card { padding:24px 16px; }
@@ -836,13 +906,16 @@ footer {
   .scene-right .scene-body  { margin-left:0; }
 
   /* Hero */
-  .hero-logo img { width:clamp(140px,42vw,200px); height:auto; object-fit:contain; }
+  .hero-logo img { width:clamp(110px,32vw,160px); height:auto; object-fit:contain; }
+  .hero-logo { gap:4px; top:clamp(54px,9vh,72px); }
+  .hero-changs { font-size:10px; letter-spacing:.22em; padding:2px 10px; }
+  .hero-eyebrow { font-size:9.5px; letter-spacing:.28em; padding:3px 12px; margin-bottom:0; }
   .hero-heart { width:clamp(90px,18vw,130px); top:clamp(8px,1.5vh,20px); }
   .hero-couple { height:clamp(42vh,52vh,58vh); bottom:16vh; }
   .hero-text { bottom:4.5vh; padding:0 20px; }
-  .hero-changs { font-size:10px; letter-spacing:.28em; margin-bottom:7px; }
-  .hero-eyebrow { font-size:9px; letter-spacing:.32em; margin-bottom:8px; }
-  .hero-venue { letter-spacing:.16em; margin-bottom:20px; }
+
+  .hero-venue { letter-spacing:.16em; margin-bottom:20px; font-size:11px; }
+  .hero-date { font-size:11px; letter-spacing:.18em; }
   .hero-cta { padding:10px 26px; }
   .scroll-cue { display:none; }
 
@@ -1332,20 +1405,22 @@ img[src*="first_weijer.jpg"] {
 <img class="hero-heart" src="heart.png" alt=""/>
 <!-- L3: 人物 -->
 <img class="hero-couple" src="main.png" alt="張維哲 × 張芝綾"/>
+<!-- L3.5: 人物下半部白化 -->
+<div class="hero-couple-fade"></div>
 <!-- L4: 底部淡出遮罩 -->
 <div class="hero-fade"></div>
 <!-- L5: 花瓣 -->
 <div class="hero-petals" id="petals-container"></div>
-<!-- L6: Logo -->
+<!-- L6: Logo + 頂部文字 -->
 <div class="hero-logo">
   <img alt="弓弓長長" src="logo.png"/>
+  <div class="hero-top-text">
+    <span class="hero-changs">Changs Getting Married</span>
+    <span class="hero-eyebrow">誠摯邀請您出席我們的婚禮</span>
+  </div>
 </div>
 <div class="hero-text">
-<span class="hero-eyebrow">誠摯邀請您出席我們的婚禮</span>
-<span class="hero-changs">Changs Getting Married</span>
-<div class="hero-names" style="font-family:'Noto Serif TC',serif;font-size:clamp(25px,3.6vw,45px);letter-spacing:.18em;">
-      張維哲 <span class="hero-amp">·</span> 張芝綾
-    </div>
+<div class="hero-names">張維哲  張芝綾</div>
 <div class="hero-divider">
 <div class="hero-divider-line"></div>
 <div class="hero-divider-dot"></div>
@@ -1358,6 +1433,17 @@ img[src*="first_weijer.jpg"] {
 </section>
 <!-- ══════════ STORY ══════════ -->
 <div id="story">
+<!-- Story intro header -->
+<div class="story-intro">
+  <span class="sec-eyebrow">Our Story</span>
+  <h2 class="sec-title">十年，一點一點走到這裡</h2>
+  <div class="sec-rule"><span></span><i></i><span></span></div>
+  <p class="story-intro-body">
+    2016 年夏天，一場宿營的舞會，一個意外的配對。<br/>
+    從台大椰林大道到舊金山，從同班同學到一起走進婚禮——<br/>
+    十年，每一段都有故事。
+  </p>
+</div>
 <!-- 1 · 宿營 — 2張照片 → 260vh -->
 <section class="scene scene-left scene-sticky-block" data-palette="camp" data-switch="0.5" id="scene-camp" style="height:260vh">
 <div class="parallax-bg" data-speed="0.08"></div>
@@ -1445,7 +1531,7 @@ img[src*="first_weijer.jpg"] {
 <span class="scene-tag">系隊 · 7 號</span>
 <h2 class="scene-title">從來沒商量過，都選了 7</h2>
 <p class="scene-body">
-          兩人熱愛打籃球，都參加系隊。從來沒有討論背號，各自幸運數字都是 7，也不約而同有同樣「台大機械」球衣同樣號碼。<br/><br/>
+          兩人熱愛打籃球，都參加系隊。從來沒有討論背號，各自幸運數字都是 7，也不約而同穿上同款的台大機械 7 號球衣。<br/><br/>
           大三各自當上機械系男籃、女籃隊長。
         </p>
 <p class="scene-caption">7 號張維哲，7 號張芝綾，是彼此的聊天室暱稱</p>
@@ -1537,7 +1623,7 @@ img[src*="first_weijer.jpg"] {
 <div class="scene-inner present-reveal" style="max-width:600px;margin:0 auto;text-align:center;">
 <span class="present-num">十</span>
 <span class="present-label">Ten Years · 2016 → 2026</span>
-<div class="present-quote">「弓弓長長」</div>
+<div class="present-quote">「張張有你」</div>
 <p class="present-body">
       我們都姓張，都是 O 型，背號都選了 7。<br/>
       有些事不用商量，就是剛好一樣。<br/><br/>
@@ -1548,12 +1634,6 @@ img[src*="first_weijer.jpg"] {
 </section>
 <!-- ══════════ SF CITY HALL ══════════ -->
 <section id="sf-cityhall">
-  <!-- 純文字標題區 -->
-  <div class="sf-title-block">
-    <span class="sf-eyebrow">San Francisco City Hall</span>
-    <span class="sf-date">2025 · 10 · 28</span>
-    <span class="sf-sub">在桃園之前，我們先在舊金山說了一次</span>
-  </div>
   <!-- 全寬橫幅：誓詞大圖 -->
   <div class="sf-banner">
     <img class="sf-banner-img" src="web_3Z9A5492.jpg" alt="交換誓詞"/>
@@ -1570,7 +1650,7 @@ img[src*="first_weijer.jpg"] {
       <img src="web_3Z9A5857.jpg" alt="金色欄杆"/>
     </div>
   </div>
-  <div class="sf-footer-note">兩個人，一個城市，一個約定。</div>
+  <div class="sf-footer-note">2025 · 10 · 28 · San Francisco City Hall</div>
 </section>
 
 <!-- ══════════ INFO ══════════ -->
@@ -1584,11 +1664,16 @@ img[src*="first_weijer.jpg"] {
 <div style="margin-top:56px;">
 <div class="scene-inner" style="max-width:520px;margin:0 auto;">
 <div class="sched-track">
+<div class="sched-date">2026 年 12 月 27 日 · 星期日</div>
+<div class="sched-row ceremony-only" style="display:none">
+<div class="sched-t"><div class="time-big">10:30</div><div class="time-sm">上午</div></div>
+<div><div class="sched-ev">賓客入場開始</div><div class="sched-loc">巴洛克廳</div></div>
+</div>
 <div class="sched-row ceremony-only" style="display:none">
 <div class="sched-t"><div class="time-big">11:00</div><div class="time-sm">上午</div></div>
 <div><div class="sched-ev">證婚儀式</div><div class="sched-loc">池畔教堂</div></div>
 </div>
-<div class="sched-row">
+<div class="sched-row no-ceremony-only">
 <div class="sched-t"><div class="time-big">11:30</div><div class="time-sm">上午</div></div>
 <div><div class="sched-ev">賓客入場 · 迎賓</div><div class="sched-loc">巴洛克廳</div></div>
 </div>
@@ -1611,10 +1696,6 @@ img[src*="first_weijer.jpg"] {
 <svg fill="none" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#b07850" opacity=".7"></path></svg>
 <span class="info-detail">330 桃園市桃園區莊敬路二段 369 號</span>
 </div>
-<div class="info-row">
-<svg fill="none" height="13" viewbox="0 0 24 24" width="13"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="#b07850" opacity=".7"></path></svg>
-<span class="info-detail">2026 年 12 月 27 日（日）<br/>10:30 開始入場</span>
-</div>
 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=330桃園市桃園區莊敬路二段369號+皇家薇庭婚宴會館" rel="noopener" target="_blank">
 <svg fill="none" height="12" viewbox="0 0 24 24" width="12"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" fill="#8fa882"></path></svg>
           開啟 Google 地圖
@@ -1627,7 +1708,10 @@ img[src*="first_weijer.jpg"] {
 <span class="info-detail">🚗 開車｜可直接導航，現場備有停車空間<br/>停車位置有限，建議提早抵達</span>
 </div>
 <div class="info-row">
-<span class="info-detail">🚆 大眾運輸｜機場捷運 A8 長庚醫院站 → 計程車約 10–15 分鐘<br/>台鐵 桃園站 → 計程車約 15–20 分鐘</span>
+<span class="info-detail">🚇 機場捷運｜A8 長庚醫院站 → 計程車約 10–15 分鐘</span>
+</div>
+<div class="info-row">
+<span class="info-detail">🚂 台鐵｜桃園站 → 計程車約 15–20 分鐘</span>
 </div>
 </div>
 <div class="info-card scene-inner">
@@ -1644,7 +1728,7 @@ img[src*="first_weijer.jpg"] {
   <div style="width:26px;height:26px;border-radius:50%;background:#8fa882;border:1px solid rgba(180,160,130,.2);" title="草木綠"></div>
 </div>
 <div class="info-row">
-<span class="info-detail" style="font-size:12px;color:var(--dust);">✦ 建議：大地色、米色、柔橘、草木綠<br/>✦ 避免：全黑、全白、螢光或高飽和色</span>
+<span class="info-detail" style="font-size:12px;color:var(--dust);">✦ 建議：大地色、米色、柔橘、草木綠</span>
 </div>
 </div>
 </div>
@@ -1660,27 +1744,18 @@ img[src*="first_weijer.jpg"] {
 <div class="rsvp-card scene-inner">
 <div class="success-msg" id="success-msg">
 <div class="success-ring">✦</div>
-<h3>感謝您的回覆</h3>
-<p>感謝您的回覆，我們會寄送確認信至您的信箱。</p>
-<div id="success-line-block" style="display:none;">
-<p style="margin-top:1.4rem;font-size:13px;color:var(--muted);letter-spacing:.04em;line-height:2;">
-  別忘了加入我們的 LINE，婚禮資訊將在這裡更新 🤍<br/>
-  <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm);letter-spacing:.1em;">@229hfvlc</span>
+<h3>恭喜報名成功！</h3>
+<p>確認信已寄出，請至信箱確認。</p>
+<p style="margin-top:8px;">
+  若沒有收到，請聯絡我們：<br/>
+  <a href="mailto:changchangder1227@gmail.com" style="color:var(--terra);text-decoration:none;letter-spacing:.04em;">changchangder1227@gmail.com</a>
 </p>
-<a href="https://line.me/R/ti/p/@229hfvlc" 
-   target="_blank" rel="noopener"
-   style="display:inline-block; margin-top:16px; padding:10px 32px;
-          border:1px solid rgba(176,120,80,.38); color:var(--terra);
-          font-family:'Noto Sans TC',sans-serif; font-size:10px;
-          letter-spacing:.24em; text-decoration:none; text-transform:uppercase;">
-  加入 LINE 好友
-</a>
-</div>
 </div>
 <form id="rsvp-form" onsubmit="handleRSVP(event)">
 <div class="f-grp">
 <label class="f-label">姓名 <span class="f-req">*</span></label>
 <input class="f-input" id="inp-name" placeholder="請輸入您的姓名" required="" type="text"/>
+<div class="field-error" id="err-name">請填寫姓名</div>
 </div>
 <div class="f-grp">
 <label class="f-label">聯絡方式 <span class="f-req">*</span></label>
@@ -1688,6 +1763,7 @@ img[src*="first_weijer.jpg"] {
 <input class="f-input" id="inp-email" placeholder="電子郵件" type="email" required/>
 <input class="f-input" id="inp-phone" placeholder="電話" type="tel"/>
 </div>
+<div class="field-error" id="err-email">請填寫電子郵件</div>
 </div>
 <div class="f-grp">
 <label class="f-label">與新人的關係 <span class="f-req">*</span></label>
@@ -1696,6 +1772,7 @@ img[src*="first_weijer.jpg"] {
 <label class="choice"><input name="rel" type="radio" value="女方親友"/><span class="c-dot"></span>女方親友</label>
 <label class="choice" style="grid-column:1/-1"><input name="rel" type="radio" value="共同朋友"/><span class="c-dot"></span>共同朋友</label>
 </div>
+<div class="choice-group-error" id="err-rel">請選擇與新人的關係</div>
 </div>
 <div class="f-grp">
 <label class="f-label">是否出席 <span class="f-req">*</span></label>
@@ -1716,45 +1793,30 @@ img[src*="first_weijer.jpg"] {
 </div>
 <div class="cond" id="att-fields">
 <div class="f-grp ceremony-only" id="ceremony-field" style="display:none">
-<label class="f-label">證婚儀式出席 <span style="font-size:11px;color:var(--dust);letter-spacing:.02em;font-family:'Cormorant Garamond',serif;font-style:italic;">11:00 · 池畔教堂</span></label>
+<label class="f-label">是否參加證婚 <span style="font-size:11px;color:var(--dust);letter-spacing:.02em;font-family:'Cormorant Garamond',serif;font-style:italic;">11:00 · 池畔教堂</span></label>
 <div class="attend-grid">
 <label class="attend">
 <input name="ceremony" type="radio" value="yes"/>
 <span class="attend-icon">⛪</span>
-<span class="attend-text">會參加</span>
+<span class="attend-text">是</span>
 </label>
 <label class="attend">
 <input name="ceremony" type="radio" value="no" checked/>
 <span class="attend-icon">🍽</span>
-<span class="attend-text">午宴即可</span>
+<span class="attend-text">否</span>
 </label>
 </div>
 </div>
 <div class="f-grp">
 <label class="f-label">同行人數（含本人）<span class="f-req"> *</span></label>
 <div class="num-row">
-<label class="num-pill"><input name="count" onchange="toggleGuests(false)" type="radio" value="1" required/>1</label>
-<label class="num-pill"><input name="count" onchange="toggleGuests(true)" type="radio" value="2"/>2</label>
-<label class="num-pill"><input name="count" onchange="toggleGuests(true)" type="radio" value="3"/>3</label>
-<label class="num-pill"><input name="count" onchange="toggleGuests(true)" type="radio" value="4+"/>4+</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(1)" type="radio" value="1" required/>1</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(2)" type="radio" value="2"/>2</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(3)" type="radio" value="3"/>3</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(4)" type="radio" value="4"/>4</label>
 </div>
 </div>
-<div class="cond f-grp" id="guest-field">
-<label class="f-label">同行賓客姓名</label>
-<input class="f-input" id="inp-guests" placeholder="請輸入同行賓客的姓名" type="text"/>
-</div>
-<div class="f-grp">
-<label class="f-label">飲食禁忌</label>
-<div class="choice-grid c2">
-<label class="choice"><input name="diet" type="radio" value="無"/><span class="c-dot"></span>無</label>
-<label class="choice"><input name="diet" type="radio" value="素食（蛋奶素）"/><span class="c-dot"></span>素食（蛋奶素）</label>
-<label class="choice"><input name="diet" type="radio" value="全素"/><span class="c-dot"></span>全素</label>
-<label class="choice"><input name="diet" onchange="toggleDiet(true)" type="radio" value="其他"/><span class="c-dot"></span>其他</label>
-</div>
-<div class="cond" id="diet-other" style="margin-top:8px">
-<input class="f-input" id="inp-diet" placeholder="例：不吃牛、海鮮過敏、清真飲食…" type="text"/>
-</div>
-</div>
+<div id="guest-fields-container"></div>
 </div>
 <div class="f-grp">
 <label class="f-label">給新人的話</label>
@@ -1763,13 +1825,13 @@ img[src*="first_weijer.jpg"] {
 <div class="submit-wrap">
 <button class="btn-submit" type="submit">送出回覆</button>
 </div>
-<p class="form-note">回覆截止日期：2026 年 11 月 30 日</p>
+
 </form>
 </div>
 </section>
 <footer>
 <div class="footer-logo">張維哲 &amp; 張芝綾</div>
-<div class="footer-date">2026 · 12 · 27 · 桃園 · 弓弓長長</div>
+<div class="footer-date">2026 · 12 · 27 · 桃園 · 張張有你</div>
 <div class="footer-note">感謝你們來見證我們最美好的一刻</div>
 </footer>
 <script>
@@ -1942,44 +2004,150 @@ window.addEventListener('scroll',()=>{
 
 /* ── RSVP ── */
 function toggleAttend(yes){document.getElementById('att-fields').classList.toggle('show',yes);}
-function toggleGuests(show){document.getElementById('guest-field').classList.toggle('show',show);}
-function toggleDiet(show){document.getElementById('diet-other').classList.toggle('show',show);}
-document.querySelectorAll('input[name="diet"]').forEach(r=>{
-  r.addEventListener('change',function(){toggleDiet(this.value==='其他');});
-});
 
+/* 動態產生每位賓客的姓名+飲食欄位 */
+function updateGuestFields(count){
+  const container = document.getElementById('guest-fields-container');
+  container.innerHTML = '';
+
+  const dietOptions = ['無','素食（蛋奶素）','全素','其他'];
+
+  for(let i = 0; i < count; i++){
+    const isFirst = i === 0;
+    const label = isFirst ? '本人' : `同行賓客 ${i}`;
+    const nameId = isFirst ? 'inp-name-0' : `inp-name-${i}`;
+    const dietName = `diet-${i}`;
+    const dietOtherId = `diet-other-${i}`;
+
+    const block = document.createElement('div');
+    block.className = 'f-grp guest-block';
+    block.style.cssText = 'border:1px solid rgba(212,169,106,.14);padding:16px;margin-bottom:14px;';
+    block.innerHTML = `
+      <div style="font-family:'Noto Sans TC',sans-serif;font-size:9.5px;letter-spacing:.22em;color:var(--warm);text-transform:uppercase;margin-bottom:12px;">${label}</div>
+      <div class="f-grp" style="margin-bottom:12px;">
+        <label class="f-label">姓名</label>
+        <input class="f-input" id="${nameId}" name="guestName${i}" placeholder="請輸入姓名" type="text" ${isFirst ? 'required' : ''}/>
+      </div>
+      <div class="f-grp" style="margin-bottom:0;">
+        <label class="f-label">飲食禁忌</label>
+        <div class="choice-grid c2">
+          ${dietOptions.map(opt => `
+            <label class="choice">
+              <input name="${dietName}" type="radio" value="${opt}" ${opt==='無'?'checked':''}
+                ${opt==='其他'?`onchange="document.getElementById('${dietOtherId}').classList.toggle('show',true)"`:''}
+                onchange="if(this.value!=='其他') document.getElementById('${dietOtherId}').classList.remove('show')"/>
+              <span class="c-dot"></span>${opt}
+            </label>`).join('')}
+        </div>
+        <div class="cond" id="${dietOtherId}" style="margin-top:8px">
+          <input class="f-input" name="dietNote${i}" placeholder="例：不吃牛、海鮮過敏…" type="text"/>
+        </div>
+      </div>
+    `;
+    container.appendChild(block);
+  }
+
+  // 第一位賓客姓名同步主表單的 inp-name
+  if(count >= 1){
+    const first = document.getElementById('inp-name-0');
+    const main  = document.getElementById('inp-name');
+    if(first && main){
+      first.value = main.value;
+      first.addEventListener('input', ()=>{ main.value = first.value; });
+      main.addEventListener('input', ()=>{ first.value = main.value; });
+    }
+  }
+}
+
+// 初始化：預設1人
+updateGuestFields(1);
+
+/* 驗證 + 送出 */
 const SHEET_URL='https://script.google.com/macros/s/AKfycbwGNDIJA0rYUuBKGR6ElWrA_B0G9EFN-Ytg4jD74FmMhaYqoMX7ehgwDZUfxv7VXTVTzQ/exec';
+
 async function handleRSVP(e){
   e.preventDefault();
-  const btn=document.querySelector('.btn-submit');
-  btn.textContent='傳送中…';btn.disabled=true;
-  const isYes=document.getElementById('att-yes').checked;
-  const dietEl=document.querySelector('input[name="diet"]:checked');
-  const dietVal=dietEl?.value||'';
-  const data={
-    name:document.getElementById('inp-name').value,
-    email:document.getElementById('inp-email').value,
-    phone:document.getElementById('inp-phone').value,
-    relation:document.querySelector('input[name="rel"]:checked')?.value||'',
-    attend:isYes?'yes':'no',
-    ceremony:document.querySelector('input[name="ceremony"]:checked')?.value||'no',
-    guests:document.querySelector('input[name="count"]:checked')?.value||'1',
-    guestNames:document.getElementById('inp-guests').value,
-    events:'全程',
-    diet:dietVal==='其他'?'其他':dietVal,
-    dietNote:dietVal==='其他'?document.getElementById('inp-diet').value:'',
-    message:document.getElementById('inp-msg').value,
-  };
-  if(SHEET_URL){
-    try{await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}
-    catch(err){console.warn(err);}
-  } else {
-    console.log('RSVP (dev):',data);
-    await new Promise(r=>setTimeout(r,700));
+
+  // 清除舊錯誤
+  document.querySelectorAll('.field-error,.choice-group-error').forEach(el=>el.classList.remove('show'));
+  document.querySelectorAll('.f-input.error').forEach(el=>el.classList.remove('error'));
+
+  let hasError = false;
+
+  // 姓名
+  const nameEl = document.getElementById('inp-name');
+  if(!nameEl.value.trim()){
+    nameEl.classList.add('error');
+    document.getElementById('err-name').classList.add('show');
+    hasError = true;
   }
+
+  // Email
+  const emailEl = document.getElementById('inp-email');
+  if(!emailEl.value.trim()){
+    emailEl.classList.add('error');
+    document.getElementById('err-email').classList.add('show');
+    hasError = true;
+  }
+
+  // 關係
+  if(!document.querySelector('input[name="rel"]:checked')){
+    document.getElementById('err-rel').classList.add('show');
+    hasError = true;
+  }
+
+  // 出席
+  if(!document.querySelector('input[name="attend"]:checked')){
+    hasError = true;
+  }
+
+  if(hasError){
+    // 捲到第一個錯誤
+    const firstErr = document.querySelector('.field-error.show, .choice-group-error.show, .f-input.error');
+    if(firstErr) firstErr.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = '傳送中…'; btn.disabled = true;
+
+  const isYes = document.getElementById('att-yes').checked;
+  const count = parseInt(document.querySelector('input[name="count"]:checked')?.value) || 1;
+
+  // 蒐集每位賓客資料
+  const guests = [];
+  for(let i = 0; i < count; i++){
+    const nameInput = document.getElementById(i===0 ? 'inp-name-0' : `inp-name-${i}`);
+    const dietEl = document.querySelector(`input[name="diet-${i}"]:checked`);
+    const dietVal = dietEl?.value || '無';
+    const dietNoteInput = document.querySelector(`input[name="dietNote${i}"]`);
+    guests.push({
+      name: nameInput?.value || '',
+      diet: dietVal === '其他' ? '其他' : dietVal,
+      dietNote: dietVal === '其他' ? (dietNoteInput?.value || '') : '',
+    });
+  }
+
+  const data = {
+    name:     document.getElementById('inp-name').value,
+    email:    document.getElementById('inp-email').value,
+    phone:    document.getElementById('inp-phone').value,
+    relation: document.querySelector('input[name="rel"]:checked')?.value || '',
+    attend:   isYes ? 'yes' : 'no',
+    ceremony: document.querySelector('input[name="ceremony"]:checked')?.value || 'no',
+    guests:   count,
+    guestDetails: JSON.stringify(guests), // 每人姓名+飲食，JSON格式存入Sheet
+    events:   '全程',
+    message:  document.getElementById('inp-msg').value,
+  };
+
+  if(SHEET_URL){
+    try{ await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); }
+    catch(err){ console.warn(err); }
+  }
+
   document.getElementById('rsvp-form').style.display='none';
   document.getElementById('success-msg').classList.add('show');
-  if(isYes) document.getElementById('success-line-block').style.display='block';
   document.getElementById('rsvp').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
@@ -2127,6 +2295,7 @@ async function handleRSVP(e){
   const p = new URLSearchParams(window.location.search);
   if(p.get('ceremony') === 'true'){
     document.querySelectorAll('.ceremony-only').forEach(el => el.style.display = '');
+    document.querySelectorAll('.no-ceremony-only').forEach(el => el.style.display = 'none');
   }
 })();
 
