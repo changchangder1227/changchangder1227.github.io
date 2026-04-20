@@ -128,7 +128,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 3: 人物 (couple) — 中下居中 ── */
 .hero-couple {
   position:absolute; z-index:3;
-  bottom:5vh; left:50%; transform:translateX(-50%) translateY(30px);
+  bottom:8vh; left:50%; transform:translateX(-50%) translateY(30px);
   height:clamp(56vh,66vh,74vh); width:auto;
   pointer-events:none;
   transform-origin:bottom center;
@@ -188,7 +188,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 6: Logo 頂部正中 ── */
 .hero-logo {
   position:absolute; z-index:7;
-  top:clamp(44px,6vh,60px); left:0; right:0;
+  top:clamp(68px,10vh,96px); left:0; right:0;
   text-align:center;
   display:flex; flex-direction:column; align-items:center; gap:6px;
   opacity:0; animation:heroItemIn .9s ease-out .25s both;
@@ -209,7 +209,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   text-align:center;
 }
 .hero-top-text {
-  display:flex; flex-direction:column; align-items:center; gap:0px;
+  display:flex; flex-direction:column; align-items:center; gap:3px;
 }
 .hero-changs {
   display:block;
@@ -250,7 +250,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 }
 .hero-names {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(32px,4.4vw,60px);
+  font-size:clamp(38px,5.2vw,70px);
   font-weight:200; letter-spacing:.1em; color:#1a1410;
   line-height:1.05;
   text-shadow: 0 0 40px rgba(250,245,237,1), 0 0 80px rgba(250,245,237,1);
@@ -1957,8 +1957,10 @@ window.addEventListener('scroll',()=>{
       }
 
       function goTo(idx){
+        const w = stack.offsetWidth;
+        if(!w) return; // layout 還沒完成，跳過
         current = ((idx % items.length) + items.length) % items.length;
-        stack.scrollTo({left: stack.offsetWidth * current, behavior:'smooth'});
+        stack.scrollTo({left: w * current, behavior:'smooth'});
         updateDots(current);
       }
 
@@ -1978,7 +1980,7 @@ window.addEventListener('scroll',()=>{
           if(isVisible && !wasVisible) startAuto();
           else if(!isVisible) stopAuto();
         });
-      },{threshold:0.75});
+      },{threshold:0.5});
       observer.observe(frame);
       frameObservers.set(frame, observer);
       stack.addEventListener('scroll',()=>{
@@ -1997,9 +1999,9 @@ window.addEventListener('scroll',()=>{
     });
   }
 
-  window.addEventListener('load', initDots);
+  window.addEventListener('load', ()=>{ requestAnimationFrame(()=>{ requestAnimationFrame(initDots); }); });
   let resizeTimer;
-  window.addEventListener('resize',()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(initDots,200); });
+  window.addEventListener('resize',()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(initDots,300); });
 })();
 
 /* ── RSVP ── */
