@@ -35,6 +35,13 @@ body {
 
 /* ══ CURSOR / CANVAS REMOVED FOR A CALMER EXPERIENCE ══ */
 
+/* ══ VoiceOver / Screen reader only ══ */
+.sr-only {
+  position:absolute; width:1px; height:1px;
+  padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
 /* ══ HERO LOADER OVERLAY ══ */
 #hero-loader {
   position:fixed; inset:0; z-index:9999;
@@ -1392,52 +1399,52 @@ img[src*="first_weijer.jpg"] {
     <circle cx="12" cy="12" r="10" stroke="#c89660" stroke-width="1.5" stroke-dasharray="40 20" stroke-linecap="round"/>
   </svg>
 </div>
-<nav id="nav">
+<nav id="nav" role="navigation" aria-label="主選單">
 <a href="#story">故事</a>
 <a href="#info">婚禮資訊</a>
 <a href="#rsvp">回覆出席</a>
 </nav>
 <!-- ══════════ HERO ══════════ -->
-<section id="hero">
+<section id="hero" aria-label="婚禮首頁">
 <!-- L1: 純背景 -->
-<img class="hero-bg" src="16_9_background.jpg" alt=""/>
+<img class="hero-bg" src="16_9_background.jpg" alt="" aria-hidden="true"/>
 <!-- L2: 愛心 -->
-<img class="hero-heart" src="heart.png" alt=""/>
+<img class="hero-heart" src="heart.png" alt="" aria-hidden="true"/>
 <!-- L3: 人物 -->
-<img class="hero-couple" src="main.png" alt="張維哲 × 張芝綾"/>
+<img class="hero-couple" src="main.png" alt="張維哲與張芝綾的插畫"/>
 <!-- L3.5: 人物下半部白化 -->
-<div class="hero-couple-fade"></div>
+<div class="hero-couple-fade" aria-hidden="true"></div>
 <!-- L4: 底部淡出遮罩 -->
-<div class="hero-fade"></div>
+<div class="hero-fade" aria-hidden="true"></div>
 <!-- L5: 花瓣 -->
-<div class="hero-petals" id="petals-container"></div>
+<div class="hero-petals" id="petals-container" aria-hidden="true"></div>
 <!-- L6: Logo + 頂部文字 -->
-<div class="hero-logo">
-  <img alt="弓弓長長" src="logo.png"/>
+<div class="hero-logo" aria-hidden="true">
+  <img alt="" src="logo.png"/>
   <div class="hero-top-text">
     <span class="hero-changs">Changs Getting Married</span>
     <span class="hero-eyebrow">誠摯邀請您出席我們的婚禮</span>
   </div>
 </div>
-<div class="hero-text">
-<div class="hero-names">張維哲 張芝綾</div>
-<div class="hero-divider">
+<div class="hero-text" role="main">
+<h1 class="hero-names" aria-label="新郎張維哲，新娘張芝綾">張維哲 張芝綾</h1>
+<div class="hero-divider" aria-hidden="true">
 <div class="hero-divider-line"></div>
 <div class="hero-divider-dot"></div>
 <div class="hero-divider-line"></div>
 </div>
-<div class="hero-date">2026 · 12 · 27</div>
-<div class="hero-venue">桃園 · 皇家薇庭 · 巴洛克廳</div>
-<a class="hero-cta" href="#rsvp">回覆出席 RSVP</a>
+<div class="hero-date"><time datetime="2026-12-27">2026 年 12 月 27 日</time></div>
+<div class="hero-venue">桃園・皇家薇庭・巴洛克廳</div>
+<a class="hero-cta" href="#rsvp" aria-label="前往回覆出席表單">回覆出席 RSVP</a>
 </div>
 </section>
 <!-- ══════════ STORY ══════════ -->
-<div id="story">
+<div id="story" aria-label="我們的故事">
 <!-- Story intro header -->
 <div class="story-intro">
-  <span class="sec-eyebrow">Our Story</span>
+  <span class="sec-eyebrow" aria-hidden="true">Our Story</span>
   <h2 class="sec-title">十年，一點一點走到這裡</h2>
-  <div class="sec-rule"><span></span><i></i><span></span></div>
+  <div class="sec-rule" aria-hidden="true"><span></span><i></i><span></span></div>
   <p class="story-intro-body">
     2016 年夏天，一場宿營的舞會，一個意外的配對。<br/>
     從台大椰林大道到舊金山，從同班同學到一起走進婚禮——<br/>
@@ -1445,11 +1452,11 @@ img[src*="first_weijer.jpg"] {
   </p>
 </div>
 <!-- 1 · 宿營 — 2張照片 → 260vh -->
-<section class="scene scene-left scene-sticky-block" data-palette="camp" data-switch="0.5" id="scene-camp" style="height:260vh">
-<div class="parallax-bg" data-speed="0.08"></div>
+<section class="scene scene-left scene-sticky-block" data-palette="camp" data-switch="0.5" id="scene-camp" style="height:260vh" role="article" aria-label="第一章：2016年宿營，相遇的起點">
+<div class="parallax-bg" data-speed="0.08" aria-hidden="true"></div>
 <div class="scene-sticky-inner"><div class="scene-grid scene-grid-story">
 <div class="scene-inner">
-<span class="scene-year">2016</span>
+<span class="scene-year" aria-hidden="true">2016</span>
 <span class="scene-tag">夏 · 台大機械宿營</span>
 <h2 class="scene-title">舞會亂排，剛好是你</h2>
 <p class="scene-body">
@@ -1459,16 +1466,15 @@ img[src*="first_weijer.jpg"] {
         </p>
 <p class="scene-caption">他高高瘦瘦靦腆，Beatbox 亞洲賽台灣代表，大家都在關注他，也被大家叫上去表演；她開朗大方，讓他印象深刻</p>
 </div>
-<div class="scene-media">
+<div class="scene-media" aria-hidden="true">
 <div class="scene-media-frame"><div class="scene-photo-stack"><div class="scene-photo-item active">
-<img alt="宿營舞會" class="scene-media-img" src="camp_group_focus.jpg"/>
+<img alt="" class="scene-media-img" src="camp_group_focus.jpg"/>
 </div><div class="scene-photo-item">
-<img alt="宿營舞會" class="scene-media-img" src="camp_selfie_focus.jpg"/>
-
+<img alt="" class="scene-media-img" src="camp_selfie_focus.jpg"/>
 </div>
-</div></div><div class="scene-media-note">那一晚還很生疏，但已經站進同一個畫面裡。</div></div></div></div></section>
+</div></div><div class="scene-media-note" aria-hidden="true">那一晚還很生疏，但已經站進同一個畫面裡。</div></div></div></div></section>
 <!-- 2 · 椰林大道 — 3張照片 → 380vh -->
-<section class="scene scene-right scene-sticky-block" data-palette="ntu" data-switch="0.33,0.66" id="scene-ntu" style="height:380vh">
+<section class="scene scene-right scene-sticky-block" data-palette="ntu" data-switch="0.33,0.66" id="scene-ntu" style="height:380vh" role="article" aria-label="第二章：2016到2021年，台大椰林大道，同班同學的日子">
 <div class="parallax-bg" data-speed="0.06"></div>
 <div class="scene-sticky-inner">
 <div class="scene-grid scene-grid-story">
@@ -1500,7 +1506,7 @@ img[src*="first_weijer.jpg"] {
 </div>
 </div></section>
 <!-- 3 · 捷運 — 2張照片 → 260vh -->
-<section class="scene scene-right scene-sticky-block scene-mrt-slide" data-palette="ntu" data-switch="0.52" id="scene-mrt" style="height:260vh">
+<section class="scene scene-right scene-sticky-block scene-mrt-slide" data-palette="ntu" data-switch="0.52" id="scene-mrt" style="height:260vh" role="article" aria-label="第三章：2016年起，陪你搭捷運從公館到丹鳳">
 <div class="parallax-bg" data-speed="0.06"></div>
 <div class="scene-sticky-inner"><div class="scene-grid scene-grid-story">
 <div class="scene-media">
@@ -1523,7 +1529,7 @@ img[src*="first_weijer.jpg"] {
 </div>
 </div></div></section>
 <!-- 4 · 籃球 — 2張照片 → 260vh -->
-<section class="scene scene-left scene-sticky-block" data-palette="bball" data-switch="0.5" id="scene-bball" style="height:260vh">
+<section class="scene scene-left scene-sticky-block" data-palette="bball" data-switch="0.5" id="scene-bball" style="height:260vh" role="article" aria-label="第四章：2016到2020年，籃球系隊，兩人都選了七號">
 <div class="parallax-bg" data-speed="0.07"></div>
 <div class="scene-sticky-inner"><div class="scene-grid scene-grid-story">
 <div class="scene-inner">
@@ -1550,7 +1556,7 @@ img[src*="first_weijer.jpg"] {
 </div>
 </div></div></section>
 <!-- 4 · 德國 Beatbox — 3張照片 → 380vh -->
-<section class="scene scene-right scene-sticky-block" data-palette="lib" data-switch="0.33,0.66" id="scene-germany" style="height:380vh">
+<section class="scene scene-right scene-sticky-block" data-palette="lib" data-switch="0.33,0.66" id="scene-germany" style="height:380vh" role="article" aria-label="第五章：2018年，德國，維哲參加世界Beatbox大賽，芝綾一起去">
 <div class="parallax-bg" data-speed="0.05"></div>
 <div class="scene-sticky-inner">
 <div class="scene-grid scene-grid-story">
@@ -1584,7 +1590,7 @@ img[src*="first_weijer.jpg"] {
 </div>
 </section>
 <!-- 5 · 美國 — 3張照片 → 380vh -->
-<section class="scene scene-left scene-sticky-block" data-palette="us" data-switch="0.33,0.66" id="scene-us" style="height:380vh">
+<section class="scene scene-left scene-sticky-block" data-palette="us" data-switch="0.33,0.66" id="scene-us" style="height:380vh" role="article" aria-label="第六章：2021年，一起飛往美國，Berkeley和Apple，各自追夢">
 <div class="parallax-bg" data-speed="0.09"></div>
 <div class="scene-sticky-inner"><div class="scene-grid scene-grid-story">
 <div class="scene-inner">
@@ -1619,9 +1625,9 @@ img[src*="first_weijer.jpg"] {
 </div></div></section>
 </div><!-- /story -->
 <!-- ══════════ PRESENT ══════════ -->
-<section id="present">
+<section id="present" aria-label="十年紀念">
 <div class="scene-inner present-reveal" style="max-width:600px;margin:0 auto;text-align:center;">
-<span class="present-num">十</span>
+<span class="present-num" aria-hidden="true">十</span>
 <span class="present-label">Ten Years · 2016 → 2026</span>
 <div class="present-quote">「張張有你」</div>
 <p class="present-body">
@@ -1633,76 +1639,82 @@ img[src*="first_weijer.jpg"] {
 </div>
 </section>
 <!-- ══════════ SF CITY HALL ══════════ -->
-<section id="sf-cityhall">
+<section id="sf-cityhall" aria-label="舊金山市政廳登記，2025年10月28日">
+  <span class="sr-only">2025年10月28日，在桃園婚禮之前，他們先在舊金山市政廳完成了登記。</span>
   <!-- 全寬橫幅：誓詞大圖 -->
-  <div class="sf-banner">
-    <img class="sf-banner-img" src="web_3Z9A5492.jpg" alt="交換誓詞"/>
+  <div class="sf-banner" aria-hidden="true">
+    <img class="sf-banner-img" src="web_3Z9A5492.jpg" alt=""/>
   </div>
   <!-- 下方三欄 -->
-  <div class="sf-gallery">
+  <div class="sf-gallery" aria-hidden="true">
     <div class="sf-gallery-item">
-      <img src="web_3Z9A5841.jpg" alt="新娘獨照"/>
+      <img src="web_3Z9A5841.jpg" alt=""/>
     </div>
     <div class="sf-gallery-item">
-      <img src="web_3Z9A5270.jpg" alt="頭紗飄逸"/>
+      <img src="web_3Z9A5270.jpg" alt=""/>
     </div>
     <div class="sf-gallery-item">
-      <img src="web_3Z9A5857.jpg" alt="金色欄杆"/>
+      <img src="web_3Z9A5857.jpg" alt=""/>
     </div>
   </div>
-  <div class="sf-footer-note">2025 · 10 · 28 · San Francisco City Hall</div>
+  <div class="sf-footer-note" aria-hidden="true">2025 · 10 · 28 · San Francisco City Hall</div>
 </section>
 
 <!-- ══════════ INFO ══════════ -->
-<section id="info">
+<section id="info" aria-label="婚禮資訊">
 <div class="info-inner">
 <div class="sec-head">
-<span class="sec-eyebrow">Wedding Day</span>
+<span class="sec-eyebrow" aria-hidden="true">Wedding Day</span>
 <h2 class="sec-title">婚禮資訊</h2>
-<div class="sec-rule"><span></span><i></i><span></span></div>
+<div class="sec-rule" aria-hidden="true"><span></span><i></i><span></span></div>
 </div>
 <div style="margin-top:56px;">
 <div class="scene-inner" style="max-width:520px;margin:0 auto;">
-<div class="sched-track">
+<div class="sched-track" role="list" aria-label="當天流程">
 <div class="sched-date">2026 年 12 月 27 日 · 星期日</div>
-<div class="sched-row ceremony-only" style="display:none">
-<div class="sched-t"><div class="time-big">10:30</div><div class="time-sm">上午</div></div>
+<div class="sched-row ceremony-only" style="display:none" role="listitem">
+<div class="sched-t" aria-hidden="true"><div class="time-big">10:30</div><div class="time-sm">上午</div></div>
 <div><div class="sched-ev">賓客入場開始</div><div class="sched-loc">巴洛克廳</div></div>
+<span class="sr-only">上午十點三十分，賓客入場開始，地點：巴洛克廳</span>
 </div>
-<div class="sched-row ceremony-only" style="display:none">
-<div class="sched-t"><div class="time-big">11:00</div><div class="time-sm">上午</div></div>
+<div class="sched-row ceremony-only" style="display:none" role="listitem">
+<div class="sched-t" aria-hidden="true"><div class="time-big">11:00</div><div class="time-sm">上午</div></div>
 <div><div class="sched-ev">證婚儀式</div><div class="sched-loc">池畔教堂</div></div>
+<span class="sr-only">上午十一點，證婚儀式，地點：池畔教堂</span>
 </div>
-<div class="sched-row no-ceremony-only">
-<div class="sched-t"><div class="time-big">11:30</div><div class="time-sm">上午</div></div>
+<div class="sched-row no-ceremony-only" role="listitem">
+<div class="sched-t" aria-hidden="true"><div class="time-big">11:30</div><div class="time-sm">上午</div></div>
 <div><div class="sched-ev">賓客入場 · 迎賓</div><div class="sched-loc">巴洛克廳</div></div>
+<span class="sr-only">上午十一點三十分，賓客入場，地點：巴洛克廳</span>
 </div>
-<div class="sched-row">
-<div class="sched-t"><div class="time-big">12:00</div><div class="time-sm">中午</div></div>
+<div class="sched-row" role="listitem">
+<div class="sched-t" aria-hidden="true"><div class="time-big">12:00</div><div class="time-sm">中午</div></div>
 <div><div class="sched-ev">午宴開始</div><div class="sched-loc">巴洛克廳</div></div>
+<span class="sr-only">中午十二點，午宴開始，地點：巴洛克廳</span>
 </div>
-<div class="sched-row">
-<div class="sched-t"><div class="time-big">14:30</div><div class="time-sm">午後</div></div>
+<div class="sched-row" role="listitem">
+<div class="sched-t" aria-hidden="true"><div class="time-big">14:30</div><div class="time-sm">午後</div></div>
 <div><div class="sched-ev">送客 · 合影留念</div><div class="sched-loc"></div></div>
+<span class="sr-only">下午兩點三十分，送客與合影留念</span>
 </div>
 </div>
 </div>
 </div>
 <div class="info-grid" style="margin-top:48px;">
 <div class="info-card scene-inner">
-<span class="info-tag">Ceremony &amp; Reception</span>
+<span class="info-tag" aria-hidden="true">Ceremony &amp; Reception</span>
 <div class="info-name">皇家薇庭婚宴會館<br/>巴洛克廳</div>
 <div class="info-row">
-<svg fill="none" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#b07850" opacity=".7"></path></svg>
+<svg fill="none" height="13" viewbox="0 0 24 24" width="13" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#b07850" opacity=".7"></path></svg>
 <span class="info-detail">330 桃園市桃園區莊敬路二段 369 號</span>
 </div>
-<a class="map-link" href="https://www.google.com/maps/search/?api=1&query=330桃園市桃園區莊敬路二段369號+皇家薇庭婚宴會館" rel="noopener" target="_blank">
-<svg fill="none" height="12" viewbox="0 0 24 24" width="12"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" fill="#8fa882"></path></svg>
+<a class="map-link" href="https://www.google.com/maps/search/?api=1&query=330桃園市桃園區莊敬路二段369號+皇家薇庭婚宴會館" rel="noopener" target="_blank" aria-label="在 Google 地圖開啟皇家薇庭婚宴會館">
+<svg fill="none" height="12" viewbox="0 0 24 24" width="12" aria-hidden="true"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" fill="#8fa882"></path></svg>
           開啟 Google 地圖
         </a>
 </div>
 <div class="info-card scene-inner">
-<span class="info-tag">Parking &amp; Transport</span>
+<span class="info-tag" aria-hidden="true">Parking &amp; Transport</span>
 <div class="info-name">交通與停車</div>
 <div class="info-row">
 <span class="info-detail">🚗 開車｜可直接導航，現場備有停車空間<br/>停車位置有限，建議提早抵達</span>
@@ -1715,12 +1727,12 @@ img[src*="first_weijer.jpg"] {
 </div>
 </div>
 <div class="info-card scene-inner">
-<span class="info-tag">Dress Code</span>
+<span class="info-tag" aria-hidden="true">Dress Code</span>
 <div class="info-name">著裝建議</div>
 <div class="info-row">
 <span class="info-detail">婚禮色調是溫暖自然的米色與夕陽感色系，歡迎一起融入這個氛圍。</span>
 </div>
-<div style="display:flex;gap:8px;margin:14px 0 12px;">
+<div style="display:flex;gap:8px;margin:14px 0 12px;" aria-hidden="true">
   <div style="width:26px;height:26px;border-radius:50%;background:#faf5ed;border:1px solid rgba(180,160,130,.35);" title="米白"></div>
   <div style="width:26px;height:26px;border-radius:50%;background:#e4ceaa;border:1px solid rgba(180,160,130,.2);" title="小麥"></div>
   <div style="width:26px;height:26px;border-radius:50%;background:#c89660;border:1px solid rgba(180,160,130,.2);" title="暖橘"></div>
@@ -1735,15 +1747,15 @@ img[src*="first_weijer.jpg"] {
 </div>
 </section>
 <!-- ══════════ RSVP ══════════ -->
-<section id="rsvp">
+<section id="rsvp" aria-label="回覆出席表單">
 <div class="sec-head" style="margin-bottom:44px;">
-<span class="sec-eyebrow">RSVP</span>
+<span class="sec-eyebrow" aria-hidden="true">RSVP</span>
 <h2 class="sec-title">回覆出席</h2>
-<div class="sec-rule"><span></span><i></i><span></span></div>
+<div class="sec-rule" aria-hidden="true"><span></span><i></i><span></span></div>
 </div>
 <div class="rsvp-card scene-inner">
-<div class="success-msg" id="success-msg">
-<div class="success-ring">✦</div>
+<div class="success-msg" id="success-msg" role="alert">
+<div class="success-ring" aria-hidden="true">✦</div>
 <h3>恭喜報名成功！</h3>
 <p>確認信已寄出，請至信箱確認。</p>
 <p style="margin-top:8px;">
@@ -1751,87 +1763,87 @@ img[src*="first_weijer.jpg"] {
   <a href="mailto:changchangder1227@gmail.com" style="color:var(--terra);text-decoration:none;letter-spacing:.04em;">changchangder1227@gmail.com</a>
 </p>
 </div>
-<form id="rsvp-form" onsubmit="handleRSVP(event)">
+<form id="rsvp-form" onsubmit="handleRSVP(event)" novalidate aria-label="婚禮出席回覆表單">
 <div class="f-grp">
-<label class="f-label">姓名 <span class="f-req">*</span></label>
-<input class="f-input" id="inp-name" placeholder="請輸入您的姓名" required="" type="text"/>
-<div class="field-error" id="err-name">請填寫姓名</div>
+<label class="f-label" for="inp-name">姓名 <span class="f-req" aria-hidden="true">*</span><span class="sr-only">（必填）</span></label>
+<input class="f-input" id="inp-name" placeholder="請輸入您的姓名" required aria-required="true" aria-describedby="err-name" type="text"/>
+<div class="field-error" id="err-name" role="alert" aria-live="polite">請填寫姓名</div>
 </div>
 <div class="f-grp">
-<label class="f-label">聯絡方式 <span class="f-req">*</span></label>
+<label class="f-label">聯絡方式 <span class="f-req" aria-hidden="true">*</span><span class="sr-only">（必填）</span></label>
 <div class="f-grid2">
-<input class="f-input" id="inp-email" placeholder="電子郵件" type="email" required/>
-<input class="f-input" id="inp-phone" placeholder="電話" type="tel"/>
+<input class="f-input" id="inp-email" placeholder="電子郵件" type="email" required aria-required="true" aria-label="電子郵件（必填）" aria-describedby="err-email"/>
+<input class="f-input" id="inp-phone" placeholder="電話" type="tel" aria-label="電話（選填）"/>
 </div>
-<div class="field-error" id="err-email">請填寫電子郵件</div>
+<div class="field-error" id="err-email" role="alert" aria-live="polite">請填寫電子郵件</div>
 </div>
-<div class="f-grp">
-<label class="f-label">與新人的關係 <span class="f-req">*</span></label>
+<div class="f-grp" role="group" aria-labelledby="lbl-rel">
+<div class="f-label" id="lbl-rel">與新人的關係 <span class="f-req" aria-hidden="true">*</span><span class="sr-only">（必填，請選擇一項）</span></div>
 <div class="choice-grid c2">
-<label class="choice"><input name="rel" required="" type="radio" value="男方親友"/><span class="c-dot"></span>男方親友</label>
-<label class="choice"><input name="rel" type="radio" value="女方親友"/><span class="c-dot"></span>女方親友</label>
-<label class="choice" style="grid-column:1/-1"><input name="rel" type="radio" value="共同朋友"/><span class="c-dot"></span>共同朋友</label>
+<label class="choice"><input name="rel" required aria-required="true" type="radio" value="男方親友"/><span class="c-dot" aria-hidden="true"></span>男方親友</label>
+<label class="choice"><input name="rel" type="radio" value="女方親友"/><span class="c-dot" aria-hidden="true"></span>女方親友</label>
+<label class="choice" style="grid-column:1/-1"><input name="rel" type="radio" value="共同朋友"/><span class="c-dot" aria-hidden="true"></span>共同朋友</label>
 </div>
-<div class="choice-group-error" id="err-rel">請選擇與新人的關係</div>
+<div class="choice-group-error" id="err-rel" role="alert" aria-live="polite">請選擇與新人的關係</div>
 </div>
-<div class="f-grp">
-<label class="f-label">是否出席 <span class="f-req">*</span></label>
+<div class="f-grp" role="group" aria-labelledby="lbl-attend">
+<div class="f-label" id="lbl-attend">是否出席 <span class="f-req" aria-hidden="true">*</span><span class="sr-only">（必填，請選擇一項）</span></div>
 <div class="attend-grid">
 <label class="attend">
-<input id="att-yes" name="attend" onchange="toggleAttend(true)" required="" type="radio" value="yes"/>
-<span class="attend-icon">🥂</span>
+<input id="att-yes" name="attend" onchange="toggleAttend(true)" required aria-required="true" type="radio" value="yes"/>
+<span class="attend-icon" aria-hidden="true">🥂</span>
 <span class="attend-text">會參加</span>
 <span class="attend-sub">期待與您相見</span>
 </label>
 <label class="attend">
 <input id="att-no" name="attend" onchange="toggleAttend(false)" type="radio" value="no"/>
-<span class="attend-icon">🙏</span>
+<span class="attend-icon" aria-hidden="true">🙏</span>
 <span class="attend-text">不克出席</span>
 <span class="attend-sub">感謝您的心意</span>
 </label>
 </div>
 </div>
 <div class="cond" id="att-fields">
-<div class="f-grp ceremony-only" id="ceremony-field" style="display:none">
-<label class="f-label">是否參加證婚 <span style="font-size:11px;color:var(--dust);letter-spacing:.02em;font-family:'Cormorant Garamond',serif;font-style:italic;">11:00 · 池畔教堂</span></label>
+<div class="f-grp ceremony-only" id="ceremony-field" style="display:none" role="group" aria-labelledby="lbl-ceremony">
+<div class="f-label" id="lbl-ceremony">是否參加證婚 <span class="sr-only">（選填，11點，池畔教堂）</span><span aria-hidden="true" style="font-size:11px;color:var(--dust);letter-spacing:.02em;font-family:'Cormorant Garamond',serif;font-style:italic;">11:00 · 池畔教堂</span></div>
 <div class="attend-grid">
 <label class="attend">
 <input name="ceremony" type="radio" value="yes"/>
-<span class="attend-icon">⛪</span>
+<span class="attend-icon" aria-hidden="true">⛪</span>
 <span class="attend-text">是</span>
 </label>
 <label class="attend">
 <input name="ceremony" type="radio" value="no" checked/>
-<span class="attend-icon">🍽</span>
+<span class="attend-icon" aria-hidden="true">🍽</span>
 <span class="attend-text">否</span>
 </label>
 </div>
 </div>
-<div class="f-grp">
-<label class="f-label">同行人數（含本人）<span class="f-req"> *</span></label>
+<div class="f-grp" role="group" aria-labelledby="lbl-count">
+<div class="f-label" id="lbl-count">同行人數（含本人）<span class="f-req" aria-hidden="true"> *</span><span class="sr-only">（必填，請選擇出席人數）</span></div>
 <div class="num-row">
-<label class="num-pill"><input name="count" onchange="updateGuestFields(1)" type="radio" value="1" required/>1</label>
-<label class="num-pill"><input name="count" onchange="updateGuestFields(2)" type="radio" value="2"/>2</label>
-<label class="num-pill"><input name="count" onchange="updateGuestFields(3)" type="radio" value="3"/>3</label>
-<label class="num-pill"><input name="count" onchange="updateGuestFields(4)" type="radio" value="4"/>4</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(1)" type="radio" value="1" required aria-label="1人"/>1</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(2)" type="radio" value="2" aria-label="2人"/>2</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(3)" type="radio" value="3" aria-label="3人"/>3</label>
+<label class="num-pill"><input name="count" onchange="updateGuestFields(4)" type="radio" value="4" aria-label="4人"/>4</label>
 </div>
 </div>
-<div id="guest-fields-container"></div>
+<div id="guest-fields-container" aria-live="polite" aria-label="各位賓客姓名與飲食欄位"></div>
 </div>
 <div class="f-grp">
-<label class="f-label">給新人的話</label>
-<textarea class="f-input" id="inp-msg" placeholder="留一句祝福，或任何你想說的話…" rows="3" style="resize:vertical;min-height:76px;"></textarea>
+<label class="f-label" for="inp-msg">給新人的話</label>
+<textarea class="f-input" id="inp-msg" placeholder="留一句祝福，或任何你想說的話…" rows="3" style="resize:vertical;min-height:76px;" aria-label="給新人的話（選填）"></textarea>
 </div>
 <div class="submit-wrap">
-<button class="btn-submit" type="submit">送出回覆</button>
+<button class="btn-submit" type="submit" aria-label="送出出席回覆">送出回覆</button>
 </div>
 
 </form>
 </div>
 </section>
-<footer>
+<footer role="contentinfo" aria-label="頁尾">
 <div class="footer-logo">張維哲 &amp; 張芝綾</div>
-<div class="footer-date">2026 · 12 · 27 · 桃園 · 張張有你</div>
+<div class="footer-date"><time datetime="2026-12-27">2026 · 12 · 27</time> · 桃園 · 張張有你</div>
 <div class="footer-note">感謝你們來見證我們最美好的一刻</div>
 </footer>
 <script>
@@ -1968,6 +1980,7 @@ window.addEventListener('scroll',()=>{
 
       function startAuto(){
         stopAuto();
+        if(!stack.offsetWidth) return; // layout 未完成，跳過
         autoTimer = setInterval(()=>goTo(current + 1), 3500);
       }
 
