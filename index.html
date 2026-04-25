@@ -628,10 +628,6 @@ img[src*="first_weijer.jpg"] {
 }
 /* schedule */
 .sched-track { max-width:520px; margin:0 auto; position:relative; }
-.sched-track::before {
-  content:''; position:absolute; left:84px; top:0; bottom:0; width:.5px;
-  background:linear-gradient(to bottom,transparent,rgba(212,169,106,.22) 10%,rgba(212,169,106,.22) 90%,transparent);
-}
 .sched-row {
   display:grid; grid-template-columns:112px 1fr;
   gap:20px; padding:20px 0; align-items:start;
@@ -990,7 +986,6 @@ footer {
   /* Info */
   #info { padding: 60px 20px; }
   .info-card { padding:22px 16px; }
-  .sched-track::before { left:68px; }
   .sched-row { grid-template-columns:80px 1fr; gap:12px; padding:16px 0; }
   .time-big { font-size:17px; }
 
