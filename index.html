@@ -259,32 +259,33 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 }
 .hero-names {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(38px,5.2vw,70px);
-  font-weight:200; letter-spacing:.1em; color:#1a1410;
-  line-height:1.05;
+  font-size:clamp(34px,4.6vw,58px);
+  font-weight:200; letter-spacing:.16em; color:#1a1410;
+  line-height:1.1;
   text-shadow: 0 0 28px rgba(250,245,237,.85), 0 0 56px rgba(250,245,237,.6);
 }
 .hero-amp { font-style:italic; color:var(--terra); margin:0 .2em; }
 
 .hero-divider {
   display:flex; align-items:center; justify-content:center;
-  gap:12px; margin:18px auto;
+  gap:14px; margin:24px auto 22px;
 }
-.hero-divider-line { width:52px; height:.5px; background:rgba(200,150,96,.4); }
-.hero-divider-dot  { width:4px; height:4px; border-radius:50%; background:rgba(200,150,96,.5); }
+.hero-divider-line { width:80px; height:.5px; background:rgba(200,150,96,.45); }
+.hero-divider-dot  { width:4px; height:4px; border-radius:50%; background:rgba(200,150,96,.55); }
 
 .hero-date {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(11px,0.9vw,13px); font-weight:200;
-  letter-spacing:.26em; color:var(--ink);
-  margin-bottom:6px;
+  font-style: italic;
+  font-size:clamp(15px,1.4vw,19px); font-weight:300;
+  letter-spacing:.18em; color:var(--ink);
+  margin-bottom:8px;
   text-shadow: 0 0 14px rgba(250,245,237,.7);
 }
 .hero-venue {
   font-family:'Noto Sans TC', sans-serif;
   font-size:clamp(11px,0.85vw,13px); font-weight:200;
-  letter-spacing:.2em; color:var(--muted);
-  margin-bottom:28px;
+  letter-spacing:.32em; color:var(--muted);
+  margin-bottom:32px;
 }
 .hero-cta {
   display:inline-block; padding:13px 42px;
@@ -353,9 +354,14 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* year stamp */
 .scene-year {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(72px,14vw,150px); font-weight:200;
-  color:rgba(228,206,170,.38); line-height:1;
-  display:block; margin-bottom:-.4em;
+  font-style: italic;
+  font-size:clamp(34px, 4.2vw, 52px); font-weight:200;
+  color:rgba(176,120,80,.5); line-height:1;
+  display:block;
+  letter-spacing: .04em;
+  margin-bottom: .8rem;
+  padding-bottom: .8rem;
+  border-bottom: .5px solid rgba(212,169,106,.28);
   user-select:none;
 }
 .scene-tag {
@@ -411,14 +417,15 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   width:100%;
   padding-bottom:62.5%; /* 16:10 — Safari fix */
   height:0;
-  border-radius:20px;
+  border-radius:4px;
   overflow:hidden;
   isolation:isolate;
-  border:1px solid rgba(180,160,130,.22);
+  border: none;
   box-shadow:
-    0 1px 2px rgba(42,36,28,.04),
-    0 8px 24px rgba(42,36,28,.07),
-    0 24px 48px rgba(42,36,28,.04);
+    0 0 0 1px rgba(255,255,255,.6),
+    0 1px 2px rgba(42,36,28,.06),
+    0 8px 22px rgba(42,36,28,.08),
+    0 22px 44px rgba(42,36,28,.05);
   background:rgba(255,252,246,.45);
   backdrop-filter:blur(8px);
 }
@@ -479,23 +486,21 @@ img[src*="first_weijer.jpg"] {
 ══════════════════════════════════════════ */
 #present {
   position:relative; z-index:10;
-  padding:160px 40px 140px;
+  padding:140px 40px 120px;
   text-align:center;
-  background:linear-gradient(180deg, #f2e8d8 0%, #ede0c8 50%, #f2e8d8 100%);
-  border-top:1px solid rgba(212,169,106,.18);
-  border-bottom:1px solid rgba(212,169,106,.18);
 }
 /* 大數字「十」單獨慢速淡入 */
 .present-num {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(80px,18vw,200px); font-weight:200;
-  color:rgba(176,120,80,.18); line-height:1; display:block;
+  font-size:clamp(72px,16vw,180px); font-weight:200;
+  color:var(--terra); line-height:1; display:block;
   user-select:none;
+  margin-bottom: -.2em;
   opacity:0; transform:scale(.94);
   transition: opacity 2.2s cubic-bezier(.16,1,.3,1), transform 2.4s cubic-bezier(.16,1,.3,1);
 }
 .present-reveal.visible .present-num {
-  opacity:1; transform:scale(1);
+  opacity:.55; transform:scale(1);
   transition-delay: 0s;
 }
 /* label */
@@ -581,11 +586,25 @@ img[src*="first_weijer.jpg"] {
 
 .sched-date {
   text-align:center;
-  font-family:'Noto Sans TC', sans-serif;
-  font-size:10px; font-weight:200;
-  letter-spacing:.22em; color:var(--warm);
-  text-transform:uppercase;
-  margin-bottom:20px;
+  margin-bottom: 44px;
+  padding-bottom: 28px;
+  border-bottom: .5px solid rgba(228,206,170,.45);
+}
+.sched-date-day {
+  display: block;
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(14px, 1.3vw, 17px); font-weight: 300;
+  letter-spacing: .42em; color: var(--warm);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sched-date-full {
+  display: block;
+  font-family:'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.2vw, 28px); font-weight: 200;
+  letter-spacing: .14em; color: var(--ink);
+  line-height: 1.2;
 }
 /* schedule */
 .sched-track { max-width:520px; margin:0 auto; position:relative; }
@@ -621,14 +640,15 @@ img[src*="first_weijer.jpg"] {
 }
 .rsvp-card {
   max-width:580px; margin:0 auto;
-  background:rgba(255,252,246,.82);
-  border:1px solid rgba(212,169,106,.16);
+  background:rgba(255,252,246,.4);
+  border:none;
   padding:48px 44px; position:relative;
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(8px);
 }
 .rsvp-card::before {
-  content:''; position:absolute; top:0;left:0;right:0; height:1.5px;
-  background:linear-gradient(to right,transparent,var(--warm),var(--sage),var(--warm),transparent);
+  content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width: 80px; height:.5px;
+  background:linear-gradient(to right,transparent,var(--warm),transparent);
 }
 .f-grp { margin-bottom:22px; }
 .f-label {
@@ -638,13 +658,33 @@ img[src*="first_weijer.jpg"] {
 }
 .f-req { color:var(--terra); margin-left:2px; }
 .f-input {
-  width:100%; padding:11px 13px;
-  border:1px solid rgba(212,169,106,.24); background:rgba(253,249,243,.7);
-  font-family:'Noto Serif TC',serif; font-size:13.5px; color:var(--ink);
-  outline:none; transition:border-color .25s, box-shadow .25s;
+  width:100%; padding:10px 2px;
+  border: none;
+  border-bottom:1px solid rgba(212,169,106,.32);
+  background: transparent;
+  font-family:'Noto Serif TC',serif; font-size:14px; color:var(--ink);
+  outline:none; transition: border-color .25s, background .25s;
+  border-radius: 0;
 }
-.f-input:focus { border-color:var(--warm); box-shadow:0 0 0 3px rgba(200,150,96,.1); }
-.f-input.error { border-color:#c0392b; box-shadow:0 0 0 3px rgba(192,57,43,.1); }
+.f-input:focus {
+  border-bottom-color: var(--warm);
+  background: rgba(245,237,216,.25);
+}
+.f-input.error {
+  border-bottom-color:#c0392b;
+  background: rgba(192,57,43,.04);
+}
+/* textarea 例外，保留邊框讓人知道可以拖拉 */
+textarea.f-input {
+  border: 1px solid rgba(212,169,106,.24);
+  background: rgba(253,249,243,.5);
+  padding: 12px 14px;
+  border-radius: 2px;
+}
+textarea.f-input:focus {
+  border-color: var(--warm);
+  background: rgba(245,237,216,.3);
+}
 .field-error {
   display:none; margin-top:6px;
   font-family:'Noto Sans TC',sans-serif;
@@ -921,7 +961,7 @@ footer {
   .scroll-cue { display:none; }
 
   /* Scene year */
-  .scene-year { font-size: clamp(44px,14vw,72px) !important; }
+  .scene-year { font-size: clamp(28px,5.5vw,40px) !important; }
 
   /* Present */
   #present { padding: 80px 20px 60px; }
@@ -1086,8 +1126,8 @@ footer {
 
   /* scene-year 在手機縮小、減少 overlap */
   .scene-sticky-block .scene-year {
-    font-size: clamp(44px, 14vw, 70px) !important;
-    margin-bottom: -0.2em !important;
+    font-size: clamp(28px, 5.5vw, 38px) !important;
+    margin-bottom: .6rem !important;
   }
 
   /* Photo stack → horizontal swipe carousel */
@@ -1095,7 +1135,7 @@ footer {
     padding-bottom: 75%; /* 4:3 — Safari fix */
     height: 0;
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: 3px;
     isolation: isolate;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
@@ -1197,9 +1237,10 @@ footer {
   transform: translate3d(0,0,0) scale(var(--media-scale));
   transform-origin: center center;
   box-shadow:
-    0 1px 2px rgba(42,36,28,.04),
-    0 10px 28px rgba(42,36,28,.08),
-    0 30px 60px rgba(42,36,28,.05);
+    0 0 0 1px rgba(255,255,255,.6),
+    0 1px 2px rgba(42,36,28,.06),
+    0 10px 26px rgba(42,36,28,.09),
+    0 28px 56px rgba(42,36,28,.06);
   will-change: transform;
 }
 
@@ -1585,29 +1626,6 @@ body.pw-locked { overflow: hidden; }
   .pw-input { font-size: 16px; }
 }
 
-/* ══════════ LINE OA CARD ══════════ */
-.line-btn {
-  display:flex; align-items:center; justify-content:center; gap:10px;
-  width:100%; margin-top:18px; padding:13px 18px;
-  border:1px solid rgba(143,168,130,.55);
-  background: linear-gradient(180deg, rgba(196,212,188,.18), rgba(196,212,188,.06));
-  font-family:'Cormorant Garamond', serif;
-  font-size: 12.5px; font-weight: 300;
-  letter-spacing:.32em; color: var(--sage);
-  text-decoration:none; text-transform:uppercase;
-  transition: all .35s;
-}
-.line-btn:hover {
-  background: var(--sage); color: #fff; border-color: var(--sage);
-}
-.line-btn-id {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 12px; letter-spacing: .1em;
-  color: var(--dust);
-  text-align: center;
-  margin-top: 10px;
-}
 
 </style>
 </head>
@@ -1674,7 +1692,7 @@ body.pw-locked { overflow: hidden; }
 <div class="hero-divider-dot"></div>
 <div class="hero-divider-line"></div>
 </div>
-<div class="hero-date"><time datetime="2026-12-27">2026 年 12 月 27 日</time></div>
+<div class="hero-date"><time datetime="2026-12-27">December · 27 · 2026</time></div>
 <div class="hero-venue">桃園・皇家薇庭・巴洛克廳</div>
 <a class="hero-cta" href="#rsvp" aria-label="前往回覆出席表單">回覆出席</a>
 <span class="sr-only">往下繼續，可以閱讀我們十年的故事，再回覆出席也不遲。</span>
@@ -1929,7 +1947,10 @@ body.pw-locked { overflow: hidden; }
 <div style="margin-top:56px;">
 <div class="scene-inner" style="max-width:520px;margin:0 auto;">
 <div class="sched-track" role="list" aria-label="當天流程">
-<div class="sched-date">2026 年 12 月 27 日 · 星期日</div>
+<div class="sched-date">
+<span class="sched-date-day">Sunday</span>
+<span class="sched-date-full">December 27, 2026</span>
+</div>
 <div class="sched-row ceremony-only" style="display:none" role="listitem">
 <div class="sched-t" aria-hidden="true"><div class="time-big">10:30</div><div class="time-sm">上午</div></div>
 <div><div class="sched-ev">賓客入場開始</div><div class="sched-loc">巴洛克廳</div></div>
@@ -2003,18 +2024,6 @@ body.pw-locked { overflow: hidden; }
 <div class="info-row">
 <span class="info-detail" style="font-size:12px;color:var(--dust);">✦ 建議：大地色、米色、柔橘、草木綠</span>
 </div>
-</div>
-<div class="info-card scene-inner">
-<span class="info-tag" aria-hidden="true">Stay In Touch</span>
-<div class="info-name">加入我們的 LINE</div>
-<div class="info-row">
-<span class="info-detail">婚禮前後我們會在這裡跟你聯絡。<br/>如果有任何問題，也歡迎隨時傳訊給我們。</span>
-</div>
-<a class="line-btn" href="https://line.me/R/ti/p/@229hfvlc" rel="noopener" target="_blank" aria-label="加入張張有你的 LINE 官方帳號">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5c0-4.5-4-8.5-9-8.5s-9 4-9 8.5c0 4 3 7.4 7.2 8.3.3.1.7.3.8.5.1.3.1.7 0 1l-.1.7c0 .2-.1.8.7.5s4.5-2.7 6.2-4.6c1.2-1.3 2.2-2.8 2.2-6.4z"/></svg>
-          加入 LINE
-        </a>
-<div class="line-btn-id" aria-hidden="true">@229hfvlc</div>
 </div>
 </div>
 </div>
