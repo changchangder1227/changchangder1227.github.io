@@ -4,6 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="googlebot" content="noindex, nofollow"/>
 <title>張張有你 · Changs Getting Married · 12.27.2026</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400&amp;family=Cormorant+Garamond:ital,wght@0,200;0,300;1,200;1,300&amp;family=Noto+Sans+TC:wght@200;300&amp;family=Unbounded:wght@200;300&amp;display=swap" rel="stylesheet"/>
@@ -135,8 +137,8 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 3: 人物 (couple) — 中下居中 ── */
 .hero-couple {
   position:absolute; z-index:3;
-  bottom:8vh; left:50%; transform:translateX(-50%) translateY(30px);
-  height:clamp(56vh,66vh,74vh); width:auto;
+  bottom:7vh; left:50%; transform:translateX(-50%) translateY(30px);
+  height:clamp(48vh,58vh,66vh); width:auto;
   pointer-events:none;
   transform-origin:bottom center;
   opacity:0;
@@ -154,9 +156,9 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 3.5: 人物下半部白化漸層 ── */
 .hero-couple-fade {
   position:absolute; z-index:4; pointer-events:none;
-  bottom:8vh; left:50%; transform:translateX(-50%);
+  bottom:7vh; left:50%; transform:translateX(-50%);
   width:clamp(300px,40vw,600px);
-  height:clamp(28vh,33vh,37vh);
+  height:clamp(24vh,30vh,34vh);
   background:linear-gradient(to bottom,
     rgba(250,245,237,0)    0%,
     rgba(250,245,237,.15) 30%,
@@ -212,7 +214,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 7: 文字底部 ── */
 .hero-text {
   position:absolute; z-index:8;
-  bottom:clamp(5vh,7vh,9vh); left:0; right:0;
+  bottom:clamp(8vh,10vh,12vh); left:0; right:0;
   text-align:center;
 }
 .hero-top-text {
@@ -222,9 +224,9 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   display:block;
   font-family:'Cormorant Garamond', serif;
   font-size:clamp(11px,0.9vw,13px); font-weight:300;
-  letter-spacing:.44em; color:rgba(140,85,35,.85);
+  letter-spacing:.42em; color:rgba(140,85,35,.85);
   text-transform:uppercase;
-  text-shadow: 0 0 20px rgba(250,245,237,1), 0 0 40px rgba(250,245,237,.8);
+  text-shadow: 0 0 14px rgba(250,245,237,.75), 0 0 28px rgba(250,245,237,.5);
   animation-delay:.55s !important;
 }
 .hero-text > * {
@@ -247,7 +249,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   font-size:clamp(10px,0.8vw,11px); font-weight:200;
   letter-spacing:.5em; color:rgba(120,70,30,.8);
   text-transform:uppercase; display:block;
-  text-shadow: 0 0 20px rgba(250,245,237,1), 0 0 40px rgba(250,245,237,.8);
+  text-shadow: 0 0 14px rgba(250,245,237,.75), 0 0 28px rgba(250,245,237,.5);
 }
 .hero-title-zh {
   font-family:'Noto Serif TC', serif;
@@ -260,7 +262,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   font-size:clamp(38px,5.2vw,70px);
   font-weight:200; letter-spacing:.1em; color:#1a1410;
   line-height:1.05;
-  text-shadow: 0 0 40px rgba(250,245,237,1), 0 0 80px rgba(250,245,237,1);
+  text-shadow: 0 0 28px rgba(250,245,237,.85), 0 0 56px rgba(250,245,237,.6);
 }
 .hero-amp { font-style:italic; color:var(--terra); margin:0 .2em; }
 
@@ -276,7 +278,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   font-size:clamp(11px,0.9vw,13px); font-weight:200;
   letter-spacing:.26em; color:var(--ink);
   margin-bottom:6px;
-  text-shadow: 0 0 20px rgba(250,245,237,.9);
+  text-shadow: 0 0 14px rgba(250,245,237,.7);
 }
 .hero-venue {
   font-family:'Noto Sans TC', sans-serif;
@@ -359,7 +361,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 .scene-tag {
   font-family:'Noto Sans TC', sans-serif;
   font-size:9.5px; font-weight:200;
-  letter-spacing:.44em; color:var(--warm); text-transform:uppercase;
+  letter-spacing:.42em; color:var(--warm); text-transform:uppercase;
   display:block; margin-bottom:1.1rem;
 }
 .scene-title {
@@ -379,25 +381,12 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   font-size:14px; color:var(--dust); letter-spacing:.07em;
 }
 
-/* atmosphere strip */
-.atm {
-  display:block; width:40px; height:2px;
-  border-radius:2px; margin-bottom:1.2rem; opacity:.7;
-}
-.atm-camp  { background:linear-gradient(to right,#a8c098,#e8c48a); }
-.atm-ntu   { background:linear-gradient(to right,#8fa882,#c4d4bc); }
-.atm-lib   { background:linear-gradient(to right,#c9a96a,#e8d5a8); }
-.atm-bball { background:linear-gradient(to right,#d4956a,#e8c48a); }
-.atm-us    { background:linear-gradient(to right,#8ab4c4,#b4ccd4); }
-.atm-now   { background:linear-gradient(to right,#c89660,#e4ceaa); }
-
 /* layout variants */
 .scene-left  .scene-inner { margin-right:auto; text-align:left; }
 .scene-right .scene-inner { margin-left:auto;  text-align:right; }
 .scene-right .scene-body  { margin-left:auto; }
 .scene-center .scene-inner { margin:auto; text-align:center; }
 .scene-center .scene-body { margin:auto; }
-.scene-center .atm { margin:0 auto 1.2rem; }
 
 /* parallax wrappers per scene */
 .parallax-bg {
@@ -426,7 +415,10 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
   overflow:hidden;
   isolation:isolate;
   border:1px solid rgba(180,160,130,.22);
-  box-shadow:0 10px 30px rgba(42,36,28,.06);
+  box-shadow:
+    0 1px 2px rgba(42,36,28,.04),
+    0 8px 24px rgba(42,36,28,.07),
+    0 24px 48px rgba(42,36,28,.04);
   background:rgba(255,252,246,.45);
   backdrop-filter:blur(8px);
 }
@@ -442,7 +434,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 img[src*="first_weijer.jpg"] {
   object-position: top center;
 }
-.scene-media-img { opacity:.82; filter:sepia(.08) saturate(.88) brightness(.95); }
+.scene-media-img { opacity:1; filter:saturate(.94) brightness(.98); }
 .scene-media-placeholder {
   width:100%; height:100%; display:flex; align-items:center; justify-content:center;
   flex-direction:column; gap:10px; color:var(--dust);
@@ -457,7 +449,7 @@ img[src*="first_weijer.jpg"] {
 }
 .scene-photo-stack { position:relative; width:100%; height:100%; }
 .scene-photo-item { position:absolute; inset:0; opacity:0; transition:opacity .6s ease; }
-.scene-photo-item.active { opacity:.82; }
+.scene-photo-item.active { opacity:1; }
 @media(max-width:900px){
   .scene-grid, .scene-right .scene-grid { grid-template-columns:1fr; gap:36px; }
   .scene-left .scene-media, .scene-right .scene-media { order:-1; }
@@ -468,18 +460,18 @@ img[src*="first_weijer.jpg"] {
 ══════════════════════════════════════════ */
 .story-intro {
   text-align:center;
-  padding:100px 40px 72px;
+  padding:140px 40px 100px;
   max-width:680px;
   margin:0 auto;
 }
 .story-intro-body {
-  margin-top:28px;
+  margin-top:36px;
   font-size:14.5px; color:var(--muted);
   line-height:2.2; letter-spacing:.04em;
 }
 @media(max-width:680px){
-  .story-intro { padding:72px 24px 52px; }
-  .story-intro-body { font-size:13.5px; }
+  .story-intro { padding:96px 24px 64px; }
+  .story-intro-body { font-size:13.5px; margin-top:28px; }
 }
 
 /* ══════════════════════════════════════════
@@ -510,7 +502,7 @@ img[src*="first_weijer.jpg"] {
 .present-label {
   font-family:'Noto Sans TC', sans-serif;
   font-size:9.5px; font-weight:200;
-  letter-spacing:.46em; color:var(--warm); text-transform:uppercase;
+  letter-spacing:.42em; color:var(--warm); text-transform:uppercase;
   display:block; margin-bottom:2.4rem;
   opacity:0; transform:translateY(12px);
   transition: opacity 1s ease, transform 1s ease;
@@ -567,7 +559,7 @@ img[src*="first_weijer.jpg"] {
 .info-tag {
   font-family:'Noto Sans TC', sans-serif;
   font-size:9.5px; font-weight:200;
-  letter-spacing:.36em; color:var(--warm); text-transform:uppercase;
+  letter-spacing:.32em; color:var(--warm); text-transform:uppercase;
   display:block; margin-bottom:14px;
 }
 .info-name { font-size:17px; font-weight:400; letter-spacing:.07em; margin-bottom:18px; line-height:1.4; }
@@ -608,9 +600,12 @@ img[src*="first_weijer.jpg"] {
 .sched-row + .sched-row { border-top:1px solid rgba(228,206,170,.35); }
 .sched-t { text-align:right; padding-right:20px; position:relative; }
 .sched-t::after {
-  content:''; position:absolute; right:-5px; top:7px;
-  width:8px; height:8px; border-radius:50%;
-  background:var(--off); border:1.5px solid var(--warm);
+  content:''; position:absolute; right:-7px; top:6px;
+  width:11px; height:11px;
+  background-color: var(--warm);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 21s-7.5-4.5-9.5-9.5C1 7.5 4 4 7.5 4c2 0 3.5 1 4.5 2.5C13 5 14.5 4 16.5 4 20 4 23 7.5 21.5 11.5 19.5 16.5 12 21 12 21z' fill='black'/></svg>") no-repeat center / contain;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 21s-7.5-4.5-9.5-9.5C1 7.5 4 4 7.5 4c2 0 3.5 1 4.5 2.5C13 5 14.5 4 16.5 4 20 4 23 7.5 21.5 11.5 19.5 16.5 12 21 12 21z' fill='black'/></svg>") no-repeat center / contain;
+  opacity: .55;
 }
 .time-big { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--warm); letter-spacing:.04em; }
 .time-sm  { font-size:9.5px; letter-spacing:.16em; color:var(--dust); text-transform:uppercase; }
@@ -749,7 +744,7 @@ img[src*="first_weijer.jpg"] {
 .sec-eyebrow {
   font-family:'Noto Sans TC',sans-serif;
   font-size:9.5px; font-weight:200;
-  letter-spacing:.46em; color:var(--warm); text-transform:uppercase;
+  letter-spacing:.42em; color:var(--warm); text-transform:uppercase;
   display:block; margin-bottom:.75rem;
 }
 .sec-title {
@@ -791,7 +786,7 @@ img[src*="first_weijer.jpg"] {
 .sf-eyebrow {
   font-family: 'Noto Sans TC', sans-serif;
   font-size: 9.5px; font-weight: 200;
-  letter-spacing: .44em; color: var(--warm); text-transform: uppercase;
+  letter-spacing: .42em; color: var(--warm); text-transform: uppercase;
   display: block;
 }
 .sf-date {
@@ -823,7 +818,7 @@ img[src*="first_weijer.jpg"] {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center bottom;
-  filter: sepia(.1) saturate(.8) brightness(.91) contrast(.88);
+  filter: saturate(.92) brightness(.96) contrast(.94);
 }
 
 /* 三欄小圖 */
@@ -852,7 +847,7 @@ img[src*="first_weijer.jpg"] {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center bottom;
-  filter: sepia(.1) saturate(.82) brightness(.93) contrast(.87);
+  filter: saturate(.94) brightness(.97) contrast(.93);
   transition: transform .8s ease;
 }
 .sf-gallery-item:hover img { transform: scale(1.03); }
@@ -901,7 +896,6 @@ footer {
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:680px){
-  .atm { display:none; }
   nav { padding:10px 12px; gap:6px; }
   nav a { font-size:8.5px; letter-spacing:.15em; padding:8px 14px; }
   .scene { padding:60px 20px; }
@@ -957,7 +951,6 @@ footer {
 /* Fix #4: sticky block 內統一靠左，不受 scene-right 影響 */
 .scene-sticky-block .scene-inner:not(.present-reveal) { text-align:left; margin-left:0; margin-right:0; }
 .scene-sticky-block .scene-body  { margin-left:0; }
-.scene-sticky-block .atm         { margin-left:0; }
 
 /* ══ SWIPE DOTS ══ */
 .mobile-dots {
@@ -990,8 +983,8 @@ footer {
 
 .scene-sticky-block .scene-sticky-inner {
   position: sticky;
-  top: 92px;
-  padding: 110px 40px 80px;
+  top: 60px;
+  padding: 80px 40px 60px;
   width: 100%;
 }
 
@@ -1036,19 +1029,19 @@ footer {
 }
 
 .scene-sticky-block .scene-photo-item.active {
-  opacity: .82;
+  opacity: 1;
 }
 
 .scene-sticky-block .scene-photo-item:nth-child(2) .scene-media-img,
 .scene-sticky-block .scene-photo-item:nth-child(2) img {
   transform: scale(1.03);
-  filter: sepia(.06) saturate(.92) brightness(.97);
+  filter: saturate(.96) brightness(.99);
 }
 
 .scene-sticky-block .scene-photo-item:nth-child(3) .scene-media-img,
 .scene-sticky-block .scene-photo-item:nth-child(3) img {
   transform: scale(1.06);
-  filter: sepia(.02) saturate(.98) brightness(1);
+  filter: saturate(1) brightness(1);
 }
 
 .scene-sticky-block .scene-photo-item .scene-media-placeholder {
@@ -1090,8 +1083,6 @@ footer {
   }
   .scene-sticky-block.scene-right .scene-body,
   .scene-sticky-block .scene-body { margin-left: 0 !important; }
-  .scene-sticky-block.scene-right .atm,
-  .scene-sticky-block .atm { margin-left: 0 !important; }
 
   /* scene-year 在手機縮小、減少 overlap */
   .scene-sticky-block .scene-year {
@@ -1131,7 +1122,7 @@ footer {
     scroll-snap-stop: always;      /* prevent fast-swipe skipping */
     opacity: 1 !important;
     transform: none !important;
-    filter: sepia(.08) saturate(.88) brightness(.95) !important;
+    filter: saturate(.94) brightness(.98) !important;
     overflow: hidden;              /* clip image within item */
   }
   .scene-sticky-block .scene-photo-item.active {
@@ -1206,8 +1197,9 @@ footer {
   transform: translate3d(0,0,0) scale(var(--media-scale));
   transform-origin: center center;
   box-shadow:
-    0 18px 40px rgba(42,36,28,.06),
-    0 3px 10px rgba(42,36,28,.03);
+    0 1px 2px rgba(42,36,28,.04),
+    0 10px 28px rgba(42,36,28,.08),
+    0 30px 60px rgba(42,36,28,.05);
   will-change: transform;
 }
 
@@ -1270,8 +1262,7 @@ footer {
 .scene-sticky-block .scene-title,
 .scene-sticky-block .scene-body,
 .scene-sticky-block .scene-caption,
-.scene-sticky-block .scene-tag,
-.scene-sticky-block .atm {
+.scene-sticky-block .scene-tag {
   transform: translate3d(0,0,0);
   opacity: calc(1 - var(--scene-fade) * .08);
 }
@@ -1381,19 +1372,244 @@ img[src*="first_weijer.jpg"] {
 }
 
 
-/* Remove all decorative atm lines */
-.atm,
-[class*="atm-"] {
-  display: none !important;
+/* ══════════ SF → INFO TRANSITION ══════════ */
+.sf-info-bridge {
+  text-align:center;
+  padding: 88px 32px 100px;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+.sf-info-bridge-line {
+  width: .5px; height: 56px;
+  background: linear-gradient(to bottom, transparent, rgba(200,150,96,.45), transparent);
+  margin: 0 auto 36px;
+  opacity: 0;
+  transition: opacity 1.2s ease, height 1.4s cubic-bezier(.22,1,.36,1);
+}
+.sf-info-bridge.visible .sf-info-bridge-line {
+  opacity: 1;
+}
+.sf-info-bridge-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 300;
+  letter-spacing: .08em;
+  color: var(--muted);
+  line-height: 1.9;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.2s ease .3s, transform 1.2s ease .3s;
+}
+.sf-info-bridge.visible .sf-info-bridge-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media(max-width:680px){
+  .sf-info-bridge { padding: 56px 24px 64px; }
+  .sf-info-bridge-line { height: 40px; margin-bottom: 24px; }
 }
 
+/* ══════════ TRANSPORT & ATTEND ICONS ══════════ */
+.tx-icon {
+  display:inline-flex;
+  width:18px; height:18px;
+  margin-right:10px;
+  flex-shrink:0;
+  vertical-align:middle;
+  color: var(--terra);
+  opacity:.78;
+}
+.tx-row {
+  display:flex; align-items:flex-start; gap:0;
+  margin-bottom:9px; line-height:1.7;
+}
+.tx-row .tx-icon { margin-top:3px; }
+.attend-svg {
+  width:24px; height:24px;
+  color: var(--terra);
+  opacity:.85;
+  margin-bottom:2px;
+}
 
+/* ══════════ DRESS CODE WATERCOLOR SWATCHES ══════════ */
+.dress-swatches {
+  display:flex; gap:14px; flex-wrap:wrap;
+  margin:18px 0 14px;
+  align-items:center;
+}
+.dress-swatch {
+  position:relative;
+  width:34px; height:34px;
+  border-radius:54% 46% 49% 51% / 47% 53% 47% 53%;
+  filter: blur(.3px);
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,.45),
+    inset 0 -3px 6px rgba(42,36,28,.06),
+    0 1px 2px rgba(42,36,28,.04);
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.dress-swatch:nth-child(2n) {
+  border-radius:48% 52% 53% 47% / 51% 49% 51% 49%;
+  width:32px; height:32px;
+}
+.dress-swatch:nth-child(3n) {
+  border-radius:51% 49% 47% 53% / 49% 53% 47% 51%;
+  width:36px; height:36px;
+}
+.dress-swatch:hover { transform: scale(1.08) rotate(2deg); }
+.dress-swatch::after {
+  content:'';
+  position:absolute; inset:-2px;
+  border-radius:inherit;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 55%);
+  pointer-events:none;
+}
 
+/* ══════════ PASSWORD GATE ══════════ */
+#pw-gate {
+  position: fixed; inset: 0; z-index: 99999;
+  background: #faf5ed;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  padding: 40px 24px;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+#pw-gate.hide {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.pw-card {
+  max-width: 420px; width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: pwIn 1s cubic-bezier(.22,1,.36,1) .15s forwards;
+}
+@keyframes pwIn { to { opacity: 1; transform: translateY(0); } }
+.pw-eyebrow {
+  font-family:'Noto Sans TC', sans-serif;
+  font-size: 9.5px; font-weight: 200;
+  letter-spacing: .42em; color: var(--warm);
+  text-transform: uppercase;
+  display: block; margin-bottom: 18px;
+}
+.pw-title {
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 38px); font-weight: 200;
+  letter-spacing: .08em; color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.pw-hint {
+  font-family:'Noto Serif TC', serif;
+  font-size: 13.5px; font-weight: 200;
+  letter-spacing: .04em; color: var(--muted);
+  line-height: 1.9; margin-bottom: 36px;
+}
+.pw-divider {
+  display:flex; align-items:center; justify-content:center;
+  gap: 10px; margin: 0 auto 32px;
+}
+.pw-divider span { width: 36px; height: .5px; background: rgba(200,150,96,.4); }
+.pw-divider i { width: 4px; height: 4px; border-radius: 50%; background: rgba(200,150,96,.5); }
+.pw-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(212,169,106,.3);
+  background: rgba(253,249,243,.8);
+  font-family:'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 300;
+  letter-spacing: .14em; color: var(--ink);
+  text-align: center;
+  outline: none;
+  transition: border-color .3s, box-shadow .3s;
+}
+.pw-input::placeholder {
+  font-family:'Noto Sans TC', sans-serif;
+  font-size: 12px; letter-spacing: .26em;
+  color: rgba(110,99,88,.4);
+  text-transform: uppercase;
+}
+.pw-input:focus {
+  border-color: var(--warm);
+  box-shadow: 0 0 0 3px rgba(200,150,96,.1);
+}
+.pw-input.error {
+  border-color: #c0392b;
+  animation: pwShake .4s ease;
+}
+@keyframes pwShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.pw-btn {
+  margin-top: 16px;
+  padding: 12px 36px;
+  background: transparent;
+  border: 1px solid rgba(176,120,80,.4);
+  color: var(--terra);
+  font-family:'Cormorant Garamond', sans-serif;
+  font-size: 12px; font-weight: 300;
+  letter-spacing: .36em; text-transform: uppercase;
+  cursor: pointer;
+  transition: all .35s;
+}
+.pw-btn:hover {
+  background: var(--terra); color: #fff; border-color: var(--terra);
+}
+.pw-error-msg {
+  margin-top: 14px;
+  font-family:'Noto Sans TC', sans-serif;
+  font-size: 11px; letter-spacing: .08em;
+  color: #c0392b;
+  opacity: 0; transition: opacity .3s;
+  min-height: 16px;
+}
+.pw-error-msg.show { opacity: 1; }
+.pw-footnote {
+  margin-top: 32px;
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px; letter-spacing: .06em;
+  color: var(--dust);
+}
 
+/* lock body scroll while gate is shown */
+body.pw-locked { overflow: hidden; }
+
+@media(max-width:680px) {
+  .pw-card { max-width: 320px; }
+  .pw-input { font-size: 16px; }
+}
 
 </style>
 </head>
-<body>
+<body class="pw-locked">
+<!-- ══════════ PASSWORD GATE ══════════ -->
+<div id="pw-gate" role="dialog" aria-label="婚禮網站密碼" aria-modal="true">
+  <div class="pw-card">
+    <span class="pw-eyebrow">Changs Getting Married</span>
+    <h1 class="pw-title">張張有你</h1>
+    <div class="pw-divider" aria-hidden="true"><span></span><i></i><span></span></div>
+    <p class="pw-hint">
+      這是維哲與芝綾的婚禮邀請<br/>
+      請輸入邀請函上的密碼進入網站
+    </p>
+    <form id="pw-form" onsubmit="return checkPassword(event)" novalidate>
+      <input type="text" id="pw-input" class="pw-input"
+        placeholder="enter password"
+        autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+        aria-label="網站密碼"/>
+      <div class="pw-error-msg" id="pw-error" role="alert" aria-live="polite">密碼不對，再試一次</div>
+      <button type="submit" class="pw-btn">Enter</button>
+    </form>
+    <p class="pw-footnote">2026 · 12 · 27 · 桃園</p>
+  </div>
+</div>
+
 <div id="hero-loader">
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="12" cy="12" r="10" stroke="#c89660" stroke-width="1.5" stroke-dasharray="40 20" stroke-linecap="round"/>
@@ -1605,10 +1821,10 @@ img[src*="first_weijer.jpg"] {
 <span class="scene-tag">加州 灣區 · 一小時的距離</span>
 <h2 class="scene-title">一起準備，一起飛過去</h2>
 <p class="scene-body">
-          兩個人的夢想是去美國看看世界。一起備考、準備申請資料，最後幸運地都錄取了灣區距離一小時的學校。灣區公共交通很不方便，平均單程2.5小時<br/><br/>
+          兩個人的夢想是去美國看看世界。一起備考、準備申請資料，最後幸運地都錄取了灣區距離一小時的學校。<br/><br/>
           她說自己成績沒他好，沒想到真的錄取了。她在 Stanford 吸收矽谷、設計精華，他在 UC Berkeley 鑽研自駕車研究。
         </p>
-<p class="scene-caption">現在他在 Tesla 做自駕車，她是 Apple iPhone 工程師</p>
+<p class="scene-caption">現在他在 Tesla 做自駕車，她在 Apple 設計 iPhone</p>
 </div>
 <div class="scene-media">
 <div class="scene-media-frame">
@@ -1619,7 +1835,7 @@ img[src*="first_weijer.jpg"] {
     </div>
 
     <div class="scene-photo-item">
-      <img src="ngrad.jpg" class="scene-media-img" alt="芝綾的畢業典禮，穿著學士服或博士服，手持畢業帽，在校園建築前留影，背景是Stanford"/>
+      <img src="ngrad.jpg" class="scene-media-img" alt="芝綾的畢業典禮，穿著碩士服，手持畢業帽，在 Stanford 校園建築前留影"/>
     </div>
 
     <div class="scene-photo-item">
@@ -1669,6 +1885,15 @@ img[src*="first_weijer.jpg"] {
   <div class="sf-footer-note" aria-hidden="true">2025 · 10 · 28 · San Francisco City Hall</div>
 </section>
 
+<!-- ══════════ SF → INFO BRIDGE ══════════ -->
+<div class="sf-info-bridge" aria-hidden="true">
+  <div class="sf-info-bridge-line"></div>
+  <div class="sf-info-bridge-text">
+    這一次，我們想和你<br/>
+    一起再說一次。
+  </div>
+</div>
+
 <!-- ══════════ INFO ══════════ -->
 <section id="info" aria-label="婚禮資訊">
 <div class="info-inner">
@@ -1714,25 +1939,28 @@ img[src*="first_weijer.jpg"] {
 <span class="info-tag" aria-hidden="true">Ceremony &amp; Reception</span>
 <div class="info-name">皇家薇庭婚宴會館<br/>巴洛克廳</div>
 <div class="info-row">
-<svg fill="none" height="13" viewbox="0 0 24 24" width="13" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#b07850" opacity=".7"></path></svg>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b07850" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="opacity:.78;flex-shrink:0;margin-top:3px;" aria-hidden="true"><path d="M12 21s-7-7-7-12a7 7 0 0 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
 <span class="info-detail">330 桃園市桃園區莊敬路二段 369 號</span>
 </div>
 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=330桃園市桃園區莊敬路二段369號+皇家薇庭婚宴會館" rel="noopener" target="_blank" aria-label="在 Google 地圖開啟皇家薇庭婚宴會館">
-<svg fill="none" height="12" viewbox="0 0 24 24" width="12" aria-hidden="true"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" fill="#8fa882"></path></svg>
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8fa882" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l-6 2v15l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v15M15 6v15"/></svg>
           開啟 Google 地圖
         </a>
 </div>
 <div class="info-card scene-inner">
 <span class="info-tag" aria-hidden="true">Parking &amp; Transport</span>
 <div class="info-name">交通與停車</div>
-<div class="info-row">
-<span class="info-detail">🚗 開車｜可直接導航，現場備有停車空間<br/>停車位置有限，建議提早抵達</span>
+<div class="tx-row">
+<svg class="tx-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M5 17v-4l2-5h10l2 5v4M5 17v2M19 17v2M8 13h8"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/></svg>
+<span class="info-detail">開車｜可直接導航，現場備有停車空間<br/>停車位置有限，建議提早抵達</span>
 </div>
-<div class="info-row">
-<span class="info-detail">🚇 機場捷運｜A8 長庚醫院站 → 計程車約 10–15 分鐘</span>
+<div class="tx-row">
+<svg class="tx-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="15" rx="3"/><path d="M6 12h12M9 18l-2 3M15 18l2 3"/><circle cx="9" cy="15" r=".7" fill="currentColor"/><circle cx="15" cy="15" r=".7" fill="currentColor"/></svg>
+<span class="info-detail">機場捷運｜A8 長庚醫院站 → 計程車約 10–15 分鐘</span>
 </div>
-<div class="info-row">
-<span class="info-detail">🚂 台鐵｜桃園站 → 計程車約 15–20 分鐘</span>
+<div class="tx-row">
+<svg class="tx-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V6a2 2 0 0 1 2-2z"/><path d="M5 11h14M9 19l-2 2M15 19l2 2"/><circle cx="9" cy="15" r=".7" fill="currentColor"/><circle cx="15" cy="15" r=".7" fill="currentColor"/></svg>
+<span class="info-detail">台鐵｜桃園站 → 計程車約 15–20 分鐘</span>
 </div>
 </div>
 <div class="info-card scene-inner">
@@ -1741,12 +1969,12 @@ img[src*="first_weijer.jpg"] {
 <div class="info-row">
 <span class="info-detail">婚禮色調是溫暖自然的米色與夕陽感色系，歡迎一起融入這個氛圍。</span>
 </div>
-<div style="display:flex;gap:8px;margin:14px 0 12px;" aria-hidden="true">
-  <div style="width:26px;height:26px;border-radius:50%;background:#faf5ed;border:1px solid rgba(180,160,130,.35);" title="米白"></div>
-  <div style="width:26px;height:26px;border-radius:50%;background:#e4ceaa;border:1px solid rgba(180,160,130,.2);" title="小麥"></div>
-  <div style="width:26px;height:26px;border-radius:50%;background:#c89660;border:1px solid rgba(180,160,130,.2);" title="暖橘"></div>
-  <div style="width:26px;height:26px;border-radius:50%;background:#b07850;border:1px solid rgba(180,160,130,.2);" title="陶土"></div>
-  <div style="width:26px;height:26px;border-radius:50%;background:#8fa882;border:1px solid rgba(180,160,130,.2);" title="草木綠"></div>
+<div class="dress-swatches" aria-hidden="true">
+  <div class="dress-swatch" style="background:radial-gradient(circle at 35% 30%, #ffffff, #faf5ed 55%, #ede4d2 100%);" title="米白"></div>
+  <div class="dress-swatch" style="background:radial-gradient(circle at 35% 30%, #f0debf, #e4ceaa 55%, #d4ba90 100%);" title="小麥"></div>
+  <div class="dress-swatch" style="background:radial-gradient(circle at 35% 30%, #d4a878, #c89660 55%, #b48048 100%);" title="暖橘"></div>
+  <div class="dress-swatch" style="background:radial-gradient(circle at 35% 30%, #c08d68, #b07850 55%, #98623c 100%);" title="陶土"></div>
+  <div class="dress-swatch" style="background:radial-gradient(circle at 35% 30%, #a4ba98, #8fa882 55%, #758f6c 100%);" title="草木綠"></div>
 </div>
 <div class="info-row">
 <span class="info-detail" style="font-size:12px;color:var(--dust);">✦ 建議：大地色、米色、柔橘、草木綠</span>
@@ -1800,13 +2028,13 @@ img[src*="first_weijer.jpg"] {
 <div class="attend-grid">
 <label class="attend">
 <input id="att-yes" name="attend" onchange="toggleAttend(true)" required aria-required="true" type="radio" value="yes"/>
-<span class="attend-icon" aria-hidden="true">🥂</span>
+<svg class="attend-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6l-.5 7a2.5 2.5 0 0 1-5 0L9 4z"/><path d="M12 13v6M9 19h6"/><path d="M16 6c1.5 0 2.5 1 2.5 2.5"/></svg>
 <span class="attend-text">會參加</span>
 <span class="attend-sub">期待與您相見</span>
 </label>
 <label class="attend">
 <input id="att-no" name="attend" onchange="toggleAttend(false)" type="radio" value="no"/>
-<span class="attend-icon" aria-hidden="true">🙏</span>
+<svg class="attend-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9.5C2 6.5 5 4 8 4c1.7 0 3 1 4 2.5C13 5 14.3 4 16 4c3 0 6 2.5 5 6.5-2 5-9 9.5-9 9.5z"/></svg>
 <span class="attend-text">不克出席</span>
 <span class="attend-sub">感謝您的心意</span>
 </label>
@@ -1818,12 +2046,12 @@ img[src*="first_weijer.jpg"] {
 <div class="attend-grid">
 <label class="attend">
 <input name="ceremony" type="radio" value="yes"/>
-<span class="attend-icon" aria-hidden="true">⛪</span>
+<svg class="attend-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M10 5h4"/><path d="M5 20V12l7-5 7 5v8"/><path d="M5 20h14"/><path d="M10 20v-4a2 2 0 0 1 4 0v4"/></svg>
 <span class="attend-text">是</span>
 </label>
 <label class="attend">
 <input name="ceremony" type="radio" value="no" checked/>
-<span class="attend-icon" aria-hidden="true">🍽</span>
+<svg class="attend-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M7 11a3 3 0 0 1-3-3V3M7 11v10"/><path d="M16 3c-1.5 0-3 2-3 5s1.5 4 3 4v9"/></svg>
 <span class="attend-text">否</span>
 </label>
 </div>
@@ -1841,7 +2069,7 @@ img[src*="first_weijer.jpg"] {
 </div>
 <div class="f-grp">
 <label class="f-label" for="inp-msg">給新人的話</label>
-<textarea class="f-input" id="inp-msg" placeholder="留一句祝福，或任何你想說的話…" rows="3" style="resize:vertical;min-height:76px;" aria-label="給新人的話（選填）"></textarea>
+<textarea class="f-input" id="inp-msg" placeholder="你還記得對我們的第一印象嗎？&#10;或是任何想說的話 ✦" rows="3" style="resize:vertical;min-height:76px;" aria-label="給新人的話（選填）"></textarea>
 </div>
 <div class="submit-wrap">
 <button class="btn-submit" type="submit" aria-label="送出出席回覆">送出回覆</button>
@@ -1856,6 +2084,57 @@ img[src*="first_weijer.jpg"] {
 <div class="footer-note">感謝你們來見證我們最美好的一刻</div>
 </footer>
 <script>
+/* ══ PASSWORD GATE ══ */
+(function(){
+  const PASSWORD = 'forever';
+  const STORAGE_KEY = 'cc_pw_ok';
+  const params = new URLSearchParams(window.location.search);
+
+  // Already authed in this session OR has invited bypass token
+  if (sessionStorage.getItem(STORAGE_KEY) === '1' || params.get('invited') === 'true') {
+    unlock(false);
+    return;
+  }
+
+  // focus input on load
+  window.addEventListener('load', () => {
+    const inp = document.getElementById('pw-input');
+    if (inp) setTimeout(() => inp.focus(), 300);
+  });
+
+  function unlock(animate) {
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    document.body.classList.remove('pw-locked');
+    const gate = document.getElementById('pw-gate');
+    if (!gate) return;
+    if (animate) {
+      gate.classList.add('hide');
+      setTimeout(() => gate.remove(), 900);
+    } else {
+      gate.style.display = 'none';
+    }
+  }
+  window._pwUnlock = unlock;
+})();
+
+window.checkPassword = function(e) {
+  e.preventDefault();
+  const input = document.getElementById('pw-input');
+  const err = document.getElementById('pw-error');
+  const value = input.value.trim().toLowerCase();
+  if (value === 'forever') {
+    err.classList.remove('show');
+    window._pwUnlock(true);
+  } else {
+    input.classList.add('error');
+    err.classList.add('show');
+    setTimeout(() => input.classList.remove('error'), 500);
+    input.value = '';
+    input.focus();
+  }
+  return false;
+};
+
 /* ── NAV ── */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
@@ -1908,6 +2187,14 @@ const sfObs=new IntersectionObserver(entries=>{
 },{threshold:0.08});
 const sfSection=document.getElementById('sf-cityhall');
 if(sfSection) sfObs.observe(sfSection);
+
+/* ── SF → INFO bridge reveal ── */
+const bridgeObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); bridgeObs.unobserve(e.target); }
+  });
+},{threshold:0.4});
+document.querySelectorAll('.sf-info-bridge').forEach(el=>bridgeObs.observe(el));
 
 /* ── AMBIENT DOTS: activate when scene visible ── */
 const ambientObs=new IntersectionObserver(entries=>{
@@ -2244,7 +2531,7 @@ async function handleRSVP(e){
 
     // 用 sticky 區塊真正可停留的區間來算 progress，
     // 避免還沒切到第二、三張，整個 section 就先被滑走。
-    const stickyTop = 92;
+    const stickyTop = 60;
     const stickyInner = block.querySelector('.scene-sticky-inner');
     const stickyHeight = stickyInner ? stickyInner.offsetHeight : vh;
     const availableRange = Math.max(1, block.offsetHeight - stickyHeight - stickyTop);
