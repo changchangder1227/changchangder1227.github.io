@@ -2556,10 +2556,9 @@ async function handleRSVP(e){
     phone:    document.getElementById('inp-phone').value,
     relation: document.querySelector('input[name="rel"]:checked')?.value || '',
     attend:   isYes ? 'yes' : 'no',
-    ceremony: document.querySelector('input[name="ceremony"]:checked')?.value || 'no',
-    guests:   count,
-    guestDetails: JSON.stringify(guests), // 每人姓名+飲食，JSON格式存入Sheet
-    events:   '全程',
+    ceremony: isYes ? (document.querySelector('input[name="ceremony"]:checked')?.value || 'no') : '',
+    guests:   isYes ? count : '',
+    guestDetails: isYes ? JSON.stringify(guests) : '',
     message:  document.getElementById('inp-msg').value,
   };
 
