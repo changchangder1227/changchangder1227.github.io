@@ -214,7 +214,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 7: 文字底部 ── */
 .hero-text {
   position:absolute; z-index:8;
-  bottom:clamp(8vh,10vh,12vh); left:0; right:0;
+  bottom:clamp(11vh,13vh,15vh); left:0; right:0;
   text-align:center;
 }
 .hero-top-text {
@@ -298,22 +298,33 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 }
 .hero-cta:hover { background:var(--terra); color:#fff; border-color:var(--terra); }
 
-/* scroll cue */
+/* scroll cue — 在 hero-text 底下，自然置中（hero-text 已 text-align:center） */
 .scroll-cue {
-  position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
-  z-index:5; display:flex; flex-direction:column; align-items:center; gap:6px;
-  opacity:0; animation:heroItemIn 1s ease 2.2s both;
+  position:relative;
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin-top: 28px;
+  z-index:5;
+  opacity:0; animation:heroItemIn 1s ease 2.6s both;
+  text-decoration:none; cursor:pointer;
+  padding:6px 12px;
+  transition: opacity .4s ease;
 }
-.scroll-cue span {
+.scroll-cue:hover { opacity:.85 !important; }
+.scroll-cue span:first-child {
   font-family:'Noto Sans TC', sans-serif;
-  font-size:8px; letter-spacing:.35em; color:rgba(110,99,88,.5); text-transform:uppercase;
+  font-size:10px; letter-spacing:.32em; color:rgba(110,99,88,.55);
+  font-weight:300;
 }
 .scroll-line {
-  width:.5px; height:38px;
+  display:block;
+  width:.5px; height:34px;
   background:linear-gradient(to bottom, rgba(200,150,96,.5), transparent);
   animation:breatheLine 2.8s ease-in-out infinite;
 }
-@keyframes breatheLine { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.2;transform:scaleY(.7)} }
+@keyframes breatheLine { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.25;transform:scaleY(.65)} }
 
 /* ══════════════════════════════════════════
    SCENE SYSTEM
@@ -969,12 +980,14 @@ footer {
   .hero-eyebrow { font-size:9.5px; letter-spacing:.28em; padding:3px 12px; margin-bottom:0; }
   .hero-heart { width:clamp(90px,18vw,130px); top:clamp(8px,1.5vh,20px); }
   .hero-couple { height:clamp(42vh,52vh,58vh); bottom:16vh; }
-  .hero-text { bottom:4.5vh; padding:0 20px; }
+  .hero-text { bottom:7vh; padding:0 20px; }
 
   .hero-venue { letter-spacing:.16em; margin-bottom:20px; font-size:11px; }
   .hero-date { font-size:11px; letter-spacing:.18em; }
   .hero-cta { padding:10px 26px; }
-  .scroll-cue { display:none; }
+  .scroll-cue { margin-top: 22px; }
+  .scroll-cue span:first-child { font-size:9px; letter-spacing:.28em; }
+  .scroll-line { height:24px; }
 
   /* Scene year */
   .scene-year { font-size: clamp(28px,5.5vw,40px) !important; }
@@ -1667,6 +1680,42 @@ body.pw-locked { overflow: hidden; }
   .scene-right .scene-stamp { margin-left: 0; }
 }
 
+/* ══════════ STORY SCROLL CUE ══════════ */
+.story-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 28px auto 0;
+  padding-top: 8px;
+  opacity: 0;
+  animation: storyCueIn 1.2s ease 0.6s forwards;
+}
+.story-cue span:first-child {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: .32em;
+  color: rgba(110, 99, 88, .55);
+  text-transform: lowercase;
+  font-weight: 400;
+}
+.story-cue-line {
+  display: block;
+  width: .5px;
+  height: 38px;
+  background: linear-gradient(to bottom, rgba(200,150,96,.5), transparent);
+  animation: breatheLine 2.8s ease-in-out infinite;
+}
+@keyframes storyCueIn {
+  to { opacity: 1; }
+}
+@media (max-width: 680px) {
+  .story-cue { margin-top: 22px; }
+  .story-cue span:first-child { font-size: 12px; letter-spacing: .28em; }
+  .story-cue-line { height: 30px; }
+}
+
 </style>
 </head>
 <body class="pw-locked">
@@ -1736,6 +1785,10 @@ body.pw-locked { overflow: hidden; }
 <div class="hero-venue">桃園・皇家薇庭・巴洛克廳</div>
 <a class="hero-cta" href="#rsvp" aria-label="前往回覆出席表單">回覆出席</a>
 <span class="sr-only">往下繼續，可以閱讀我們十年的故事，再回覆出席也不遲。</span>
+<a class="scroll-cue" href="#story" aria-label="往下捲動看我們的故事">
+  <span>往下，先看故事</span>
+  <span class="scroll-line" aria-hidden="true"></span>
+</a>
 </div>
 </section>
 <!-- ══════════ STORY ══════════ -->
@@ -1750,6 +1803,10 @@ body.pw-locked { overflow: hidden; }
     從台大椰林大道到舊金山，從同班同學到一起走進婚禮——<br/>
     十年，每一段都有故事。
   </p>
+  <div class="story-cue" aria-hidden="true">
+    <span>continue</span>
+    <span class="story-cue-line"></span>
+  </div>
 </div>
 <!-- 1 · 宿營 — 2張照片 → 260vh -->
 <section class="scene scene-left scene-sticky-block" data-palette="camp" data-switch="0.5" id="scene-camp" style="height:260vh" role="article" aria-label="第一章：2016年宿營，相遇的起點">
