@@ -2155,6 +2155,10 @@ body.pw-locked { overflow: hidden; }
 <div id="guest-fields-container" aria-live="polite" aria-label="各位賓客姓名與飲食欄位"></div>
 </div>
 <div class="f-grp">
+<label class="f-label" for="inp-needs">特殊需求</label>
+<textarea class="f-input" id="inp-needs" placeholder="例如：兒童座椅、行動不便、孕婦哺乳等&#10;讓我們事前為你準備（選填）" rows="2" style="resize:vertical;min-height:60px;" aria-label="特殊需求（選填）"></textarea>
+</div>
+<div class="f-grp">
 <label class="f-label" for="inp-msg">給新人的話</label>
 <textarea class="f-input" id="inp-msg" placeholder="你還記得對我們的第一印象嗎？&#10;或是任何想說的話 ✦" rows="3" style="resize:vertical;min-height:76px;" aria-label="給新人的話（選填）"></textarea>
 </div>
@@ -2559,6 +2563,7 @@ async function handleRSVP(e){
     ceremony: isYes ? (document.querySelector('input[name="ceremony"]:checked')?.value || 'no') : '',
     guests:   isYes ? count : '',
     guestDetails: isYes ? JSON.stringify(guests) : '',
+    needs:    document.getElementById('inp-needs').value,
     message:  document.getElementById('inp-msg').value,
   };
 
