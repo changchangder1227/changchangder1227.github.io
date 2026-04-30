@@ -259,10 +259,10 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 }
 .hero-names {
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(34px,4.6vw,58px);
-  font-weight:200; letter-spacing:.16em; color:#1a1410;
-  line-height:1.1;
-  text-shadow: 0 0 28px rgba(250,245,237,.85), 0 0 56px rgba(250,245,237,.6);
+  font-size:clamp(28px,3.0vw,40px);
+  font-weight:200; letter-spacing:.18em; color:#1a1410;
+  line-height:1.2;
+  text-shadow: 0 0 24px rgba(250,245,237,.7), 0 0 48px rgba(250,245,237,.5);
 }
 .hero-amp { font-style:italic; color:var(--terra); margin:0 .2em; }
 
@@ -298,19 +298,21 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 }
 .hero-cta:hover { background:var(--terra); color:#fff; border-color:var(--terra); }
 
-/* scroll cue — 在 hero-text 底下，自然置中（hero-text 已 text-align:center） */
+/* scroll cue — 掛在 hero-text 下方，不撐高 hero-text */
 .scroll-cue {
-  position:relative;
-  display:inline-flex;
+  position:absolute;
+  bottom: -68px;
+  left:50%; transform:translateX(-50%);
+  display:flex;
   flex-direction:column;
   align-items:center;
   gap:8px;
-  margin-top: 28px;
   z-index:5;
   opacity:0; animation:heroItemIn 1s ease 2.6s both;
   text-decoration:none; cursor:pointer;
   padding:6px 12px;
   transition: opacity .4s ease;
+  white-space: nowrap;
 }
 .scroll-cue:hover { opacity:.85 !important; }
 .scroll-cue span:first-child {
@@ -985,7 +987,7 @@ footer {
   .hero-venue { letter-spacing:.16em; margin-bottom:20px; font-size:11px; }
   .hero-date { font-size:11px; letter-spacing:.18em; }
   .hero-cta { padding:10px 26px; }
-  .scroll-cue { margin-top: 22px; }
+  .scroll-cue { bottom: -54px; }
   .scroll-cue span:first-child { font-size:9px; letter-spacing:.28em; }
   .scroll-line { height:24px; }
 
