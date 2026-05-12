@@ -137,8 +137,8 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 3: 人物 (couple) — 中下居中 ── */
 .hero-couple {
   position:absolute; z-index:3;
-  bottom:7vh; left:50%; transform:translateX(-50%) translateY(30px);
-  height:clamp(48vh,58vh,66vh); width:auto;
+  bottom:0; left:50%; transform:translateX(-50%) translateY(30px);
+  height:clamp(58vh,69vh,78vh); width:auto;
   pointer-events:none;
   transform-origin:bottom center;
   opacity:0;
@@ -156,9 +156,9 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 3.5: 人物下半部白化漸層 ── */
 .hero-couple-fade {
   position:absolute; z-index:4; pointer-events:none;
-  bottom:7vh; left:50%; transform:translateX(-50%);
+  bottom:0; left:50%; transform:translateX(-50%);
   width:clamp(300px,40vw,600px);
-  height:clamp(24vh,30vh,34vh);
+  height:clamp(28vh,36vh,42vh);
   background:linear-gradient(to bottom,
     rgba(250,245,237,0)    0%,
     rgba(250,245,237,.15) 30%,
@@ -214,7 +214,7 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 /* ── Layer 7: 文字底部 ── */
 .hero-text {
   position:absolute; z-index:8;
-  bottom:clamp(11vh,13vh,15vh); left:0; right:0;
+  bottom:clamp(8vh,10vh,12vh); left:0; right:0;
   text-align:center;
 }
 .hero-top-text {
@@ -260,9 +260,9 @@ nav a:hover { color:var(--terra); border-color:rgba(176,120,80,.45); background:
 .hero-names {
   font-family:'Cormorant Garamond', serif;
   font-size:clamp(28px,3.0vw,40px);
-  font-weight:200; letter-spacing:.18em; color:#1a1410;
+  font-weight:200; letter-spacing:.18em; color:var(--ink);
   line-height:1.2;
-  text-shadow: 0 0 24px rgba(250,245,237,.7), 0 0 48px rgba(250,245,237,.5);
+  text-shadow: 0 0 24px rgba(250,245,237,.85), 0 0 48px rgba(250,245,237,.6);
 }
 .hero-amp { font-style:italic; color:var(--terra); margin:0 .2em; }
 
@@ -981,8 +981,8 @@ footer {
   .hero-changs { font-size:10px; letter-spacing:.22em; padding:2px 10px; }
   .hero-eyebrow { font-size:9.5px; letter-spacing:.28em; padding:3px 12px; margin-bottom:0; }
   .hero-heart { width:clamp(90px,18vw,130px); top:clamp(8px,1.5vh,20px); }
-  .hero-couple { height:clamp(42vh,52vh,58vh); bottom:16vh; }
-  .hero-text { bottom:7vh; padding:0 20px; }
+  .hero-couple { height:clamp(50vh,60vh,68vh); bottom:0; }
+  .hero-text { bottom:8vh; padding:0 20px; }
 
   .hero-venue { letter-spacing:.16em; margin-bottom:20px; font-size:11px; }
   .hero-date { font-size:11px; letter-spacing:.18em; }
